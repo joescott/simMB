@@ -5,7 +5,7 @@
  * @brief Command Shell configuration.
  *
  * This file is where it's possible to be done some parameterizations over 
- * the behavior of thecommand shell
+ * the behavior of the command shell
  *
  */
 

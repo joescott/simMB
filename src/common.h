@@ -1,5 +1,5 @@
-#ifndef __SLAVEMBHMI_H__
-#define __SLAVEMBHMI_H__
+#ifndef __COMMON_H__
+#define __COMMON_H__
 
 #include <stdbool.h>
 #include <stdint.h>
@@ -8,11 +8,13 @@
 
 #include "mbhmi.h"
 
+/**
+ * Default Modbus server id
+ */
 #define  SERVER_ID_DFT 		1
 
 /**
  * Estructura de datos 
- * slavemb
  */
 typedef struct {
     int id;
@@ -23,7 +25,7 @@ typedef struct {
 	int  port_ndbits;
 	int  port_nsbits;
 
-} SLVMB_ST;
+} MB_CONF_ST;
 
 /**
  * Estructura de datos para la 
@@ -79,7 +81,10 @@ typedef struct {
 /**
  * Tipo de salida de slavemb
  */
-enum {EXIT_SLVMB, WARM_SLVMB };
+enum {
+    EXIT_CODE, 
+    EXIT_WARM_CODE 
+};
 
 /**
  * The Slave Address

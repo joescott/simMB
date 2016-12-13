@@ -2,7 +2,7 @@
 #define __SCREEEN_H__
 
 /**
- *  Definiciones a ser utilizadas en el formateo de pantalla 
+ * Colors definitions
  */
 #define _SCREEN_CLEAR       "\033[2J"
 #define _SCREEN_CLEAR_LINE  "\033[2K"
@@ -23,24 +23,5 @@
 #define _SCREEN_DIM         "\033[2m"
 #define _SCREEN_UNDERL      "\033[4m"
 #define _SCREEN_BLINK       "\033[5m"
-
-
-#define _LOOP_INIT()     static bool _tdloop_on = false;\
-                         static struct timeval _tdloop;\
-                         static int _tdloop_inc;\
-                         struct timeval _tdloop_end;\
-                         if(!_tdloop_on++) gettimeofday(&_tdloop, NULL);\
-                         gettimeofday(&_tdloop_end, NULL);
-
-#define _LOOP_PRINT()    printf("%8lld",timespecDiffms(&_tdloop_end,&_tdloop));
-
-#define _GET_LOOP_INC_VAL()  _tdloop_inc
-#define _SET_LOOP_INC_VAL()  _tdloop_inc += timespecDiffms(&_tdloop_end,&_tdloop)
-#define _RESET_LOOP_INC_VAL()  _tdloop_inc = 0
-
-#define _LOOP_SET()      gettimeofday(&_tdloop,NULL);
-
-#define _PRINT_STATUS(label,ok)  {printf("%-60s",label);printf("%6s"_SCREEN_NCHAR"\n",(!(ok))?_SCREEN_GREEN"[OK]":_SCREEN_BLUE"[NONE]");}
-
 
 #endif

@@ -11,7 +11,7 @@
 /**
  * Implementation headers
  */
-#include "simmb.h"
+#include "common.h"
 #include "utils.h"
 #include "mb_map.h"
 /**/

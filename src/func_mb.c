@@ -1,11 +1,13 @@
 /**
- * funchmi.c
+ * @file func_mb.c
+ *  Implementation of ModBus routines
  */
 
 #include <math.h>
+#include <modbus.h>
 
 #include "mb_map.h"
-#include "funcsimmb.h"
+#include "func_mb.h"
 #include "debug.h"
 #include "utils.h"
 
@@ -20,7 +22,6 @@ SLVMB_PROC_DEF(init_var)
     valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(STATUS,   0));
     valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(PESO_MAX, 7000));
     valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(INI_GRAF, 200));
-
     return 0;
 }
 

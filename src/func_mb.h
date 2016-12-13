@@ -1,7 +1,7 @@
-#ifndef __FUNCHMI_H__
-#define __FUNCHMI_H__
+#ifndef __FUNC_MB_H__
+#define __FUNC_MB_H__
 
-#include "simmb.h"
+#include "common.h"
 /**
  * funchmi.h
  */

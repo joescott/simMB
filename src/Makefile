@@ -1,69 +1,62 @@
 # ---------------------------------------------------------------------------
 # Makefile
 # ---------------------------------------------------------------------------
-include VERSION
-PROGNAME    = simmb
+#  Definitios exported from main Makefile
+#  	PROGNAME
+#  	VERSION
+#  	BUILD_NUMBER
+#  	MODBUS_LIB
+#  	MODBUS_INCLUDE
+# ---------------------------------------------------------------------------
 
-BUILD_NUMBER_FILE=build.txt
+BIN_DEST  = $(BINDIR)/$(PROGNAME)
 
-CC          = gcc
-INCLUDE     = -I. -I../libmodbus/src
-CFLAGS      = -MD -g -Wall -DNDEBUG -DTYPE_ADQ
-CFLAGS      += $(INCLUDE) 
-CFLAGS      += -DVERSION=$(VERSION) -DPROGNAME=$(PROGNAME)
-ASFLAGS     = -MD
-LDFLAGS     = -lpthread -lrt -lc -lm 
-LDLIBS      = -L.
-MODBUS 		= ../libmodbus/src/.libs/modbus.o
-MODBUS 		+= ../libmodbus/src/.libs/modbus-data.o
-MODBUS 		+= ../libmodbus/src/.libs/modbus-rtu.o
-MODBUS 		+= ../libmodbus/src/.libs/modbus-tcp.o
-BINDIR      = ../
+BUILD_DATE=$$(date +'%Y%m%d')
+CFLAGS      +=-DBUILD_NUMBER=$(BUILD_NUMBER)
+CFLAGS      +=-DBUILD_DATE=$(BUILD_DATE)
+INCLUDE  = -I. -I$(MODBUS_INCLUDE)
+CFLAGS   = -MD -g -Wall -DNDEBUG -DTYPE_ADQ
+CFLAGS   += $(INCLUDE) 
+CFLAGS   += -DVERSION=$(VERSION) -DPROGNAME=$(PROGNAME)
+CFLAGS   += -DBUILD_NUMBER=$(BUILD_NUMBER) -DBUILD_DATE=$(BUILD_DATE)
+ASFLAGS  = -MD
+LDFLAGS  = -lpthread -lrt -lc -lm 
+LDLIBS   = -L.
 
-MB_SRC      = debug.c utils.c error.c simmb.c funcsimmb.c shell.c shell_cmds.c sim.c
+SRC      = debug.c utils.c main.c func_mb.c shell.c shell_cmds.c sim.c
 
-CSRC        = $(MB_SRC) 
-ASRC        = 
-OBJS        = $(CSRC:.c=.o) $(ASRC:.S=.o)
-DEPS        = $(OBJS:.o=.d) 
-BIN         = $(PROGNAME)
+OBJS     = $(SRC:.c=.o)
+DEPS     = $(OBJS:.o=.d) 
 
 .PHONY: all clean 
 
-ifneq ($(MAKECMDGOALS),clean)
-$(info Compilando $(PROGNAME) Version $(VERSION))
-endif
-all: $(BIN)
+all: $(BUILD_NUMBER_FILE) $(BIN_DEST)
 
-$(BIN): $(OBJS) $(BUILD_NUMBER_FILE)
-	@printf "%-30s" "Linking $(PROGNAME)"
-	@$(CC) $(OBJS) $(MODBUS) $(LDLIBS) $(LDFLAGS) -o $(BINDIR)/$@ && echo "OK"
+$(BIN_DEST): $(OBJS)
+	@printf "%-40s" "Linking $(PROGNAME) - Version $(VERSION).$(BUILD_NUMBER)"
+	@$(CC) $(OBJS) $(MODBUS_LIB) $(LDLIBS) $(LDFLAGS) -o $@ >.log 2>&1 && echo "[OK]" || echo "[ERROR]"
+	@cat .log && rm -rf .log
 
 clean:
+	@echo Cleaning $(PROGNAME) - Version $(VERSION).$(BUILD_NUMBER)
 	@rm -f $(DEPS)
 	@rm -f $(OBJS)
-	@rm -f $(BINDIR)/$(BIN) $(TGT).map
+	@rm -f $(BIN_DEST) $(TGT).map
 
-pack:
-	./$(PROGNAME) -v > $(PROGNAME).info
-	tar -zcvf $(PROGNAME)_$(VERSION).tgz $(PROGNAME) $(PROGNAME).info 
-	mv $(PROGNAME)_$(VERSION).tgz $(DEST)
+$(BUILD_NUMBER_FILE): $(SRC)
+	@$(eval BUILD_NUMBER=$(shell echo $$(($(BUILD_NUMBER)+1))))
+	@echo BUILD_NUMBER=$(BUILD_NUMBER) > $(BUILD_NUMBER_FILE)
+	@echo Compiling $(PROGNAME) - Version $(VERSION).$(BUILD_NUMBER)
 
 # ---------------------------------------------------------------------------
-# rules for code generation
+# Rules for code generation
 # ---------------------------------------------------------------------------
-%.o:    %.c
-	@printf "%-30s" "$<" 
-	@$(CC) $(CFLAGS) -o $@ -c $< && echo "OK"
+%.o: %.c
+	@printf "%-40s" "$<" 
+	@$(CC) $(CFLAGS) -o $@ -c $< >.log 2>&1 && echo "[OK]" || echo "[ERROR]"
+	@cat .log && rm -rf .log
 
-%.o:    %.S
-	@$(CC) $(ASFLAGS) -o $@ -c $<
-	
 # ---------------------------------------------------------------------------
-# Include build number rules.
-include build.mak
-# ---------------------------------------------------------------------------
-# ---------------------------------------------------------------------------
-#  # compiler generated dependencies
+# Compiler generated dependencies
 # ---------------------------------------------------------------------------
 -include $(DEPS)

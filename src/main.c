@@ -1,5 +1,6 @@
 /*
- * slavembHMI
+ * @file main.c
+ *  Modbus Simulation Tool 
  */
 
 #include <stdio.h>
@@ -18,15 +19,14 @@
 #include "debug.h"
 #include "screen.h"
 #include "utils.h"
-
-#include "simmb.h"
+#include "common.h"
 #include "shell.h"
 #include "sim.h"
-#include "funcsimmb.h"
+#include "func_mb.h"
 #include "macro_utils.h"
 #include "version.h"
 
-static SLVMB_ST slvmb=
+static MB_CONF_ST mb_conf=
 {
 	.id= SERVER_ID_DFT,
 
@@ -43,24 +43,27 @@ static DATA_ST d_st=
 
     .sim_time = 100000,     /** msec */
     .sim_m_factor = 100,    /** pendiente desplazamiento */
-    .sim_z_factor = 0,       /** iinicio del desplazamiento */
+    .sim_z_factor = 0,      /** inicio del desplazamiento */
 };
 
 static uint8_t*  mb_query;
 static pthread_t main_threads[2];
 
+/**
+ * Program Options
+ */
 #define USAGE_STRING  "\n\
- Uso: %s [-h][-p port]\n\
+ Uso: %s [-h] -p port <optionals>\n\
+ -p,    --port     Path serial port [MANDATORY]\n\
  -h,    --help     Help \n\
  -s,    --slave    Slave ID\n\
- -p,    --port     Path Puerto Serie\n\
- -b,    --baud     BaudRate Puerto Serie\n\
+ -b,    --baud     Serial port baudrate\n\
  -d,    --debug    Debug\n\
  -l,    --loop     Loop time delay\n\
- -v,    --version  Imprime la version\n\
+ -v,    --version  Print version\n\
 "
 
-struct option longopts[] =
+static struct option longopts[] =
 {
     { "help",         0, 0,   'h' },
     { "id", 	      1, 0,   's' },
@@ -72,13 +75,20 @@ struct option longopts[] =
     { NULL,           0, 0,    0  }
 };
 
-static void
-usage (FILE *fp, int n)
+static const char * _opts = "hs:p:b:l:v";
+
+/**
+ * Print help usage
+ */
+static void usage(FILE *fp, int n)
 {
-  fprintf(fp, "\n"_EVAL(PROGNAME)"v"_EVAL(VERSION)"\n"USAGE_STRING,_EVAL(PROGNAME));
-  exit (n);
+  fprintf(fp, "\n"_EVAL(PROGNAME)"v"_EVAL(VERSION)"."_EVAL(BUILD_NUMBER)"\n"USAGE_STRING,_EVAL(PROGNAME));
+  exit(n);
 }
 
+/**
+ * Print version 
+ */
 static void print_version()
 {
     printf(VERSION_FMT, 
@@ -92,7 +102,7 @@ static void print_version()
 /**
  * Aux Functions
  */
-static void slavmb_exit(int status)
+static void main_exit(int status)
 {
   pthread_mutex_destroy(&d_st.mutex);
   if(mb_query)	free(mb_query);
@@ -101,32 +111,44 @@ static void slavmb_exit(int status)
   exit(status);
 }
 
-static void slavmb_error(int exit, const char *fmt, ...)
+static void main_error(int exit, const char *fmt, ...)
 {
   va_list ap;
   va_start(ap, fmt);
   vfprintf(stderr, fmt, ap);
   va_end(ap);
-  if(exit == EXIT_SLVMB)
-    slavmb_exit(EXIT_FAILURE);
+  if(exit == EXIT_CODE)
+    main_exit(EXIT_FAILURE);
 }
 
+/**
+ * Signals Handler function
+ */
 static void sigHandler(int signal)
 {
-    printf("Signal Receive [%d] End Server\n", signal);
-    slavmb_exit(EXIT_SUCCESS);
+    printf("Signal Received [%d] - End Server\n", signal);
+    main_exit(EXIT_SUCCESS);
 }
 
+/**
+ * Init signal Handlers function
+ */
 static void initSignals()
 {
     signal(SIGTERM, sigHandler);
     signal(SIGINT,  sigHandler);
 }
 
-/**
- * ModBUS
+/*
+ * ModBUS processing 
  */
-int readDOCoil(DATA_ST *d_st, uint8_t *mb_query)
+
+/**
+ *  readDOCoil
+ *  Read Discrete Output Coil
+ *  TODO: Not implemented yet
+ */
+static int readDOCoil(DATA_ST *d_st, uint8_t *mb_query)
 {
   uint16_t addr = MODBUS_GET_INT16_FROM_INT8(mb_query, MB_DATA_ADDR);
   uint16_t value = MODBUS_GET_INT16_FROM_INT8(mb_query, MB_DATA_SINGLE_VALUE);
@@ -134,7 +156,12 @@ int readDOCoil(DATA_ST *d_st, uint8_t *mb_query)
   return 0;
 }
 
-int writeDOCoil(DATA_ST *d_st, uint8_t *mb_query)
+/**
+ *  writeDOCoil
+ *  Write Discrete Output Coil
+ *  TODO: Not implemented yet
+ */
+static int writeDOCoil(DATA_ST *d_st, uint8_t *mb_query)
 {
   uint16_t addr = MODBUS_GET_INT16_FROM_INT8(mb_query, MB_DATA_ADDR);
   uint16_t value = MODBUS_GET_INT16_FROM_INT8(mb_query, MB_DATA_SINGLE_VALUE);
@@ -142,27 +169,35 @@ int writeDOCoil(DATA_ST *d_st, uint8_t *mb_query)
   return 0;
 }
 
-SLVMB_READ_OHR_ST slvmbreadohr_tbl[]=
+SLVMB_READ_OHR_ST mb_confreadohr_tbl[]=
 {
   {ANY_ADDRESS,         get_var      }
 };
-#define SLVMB_READ_OHR_TBL_SIZE (sizeof(slvmbreadohr_tbl)/sizeof(SLVMB_READ_OHR_ST))
+#define SLVMB_READ_OHR_TBL_SIZE (sizeof(mb_confreadohr_tbl)/sizeof(SLVMB_READ_OHR_ST))
 
-int readAOHReg(DATA_ST *d_st, uint8_t *mb_query)
+/**
+ *  readAOHReg
+ *  Read Analog Holding Register
+ */
+static int readAOHReg(DATA_ST *d_st, uint8_t *mb_query)
 {
     int rtn = 0;
-    SLVMB_READ_OHR_ST *pslvmb_readohr;
+    SLVMB_READ_OHR_ST *pmb_conf_readohr;
     uint16_t addr = MODBUS_GET_INT16_FROM_INT8(mb_query, MB_DATA_ADDR);
     pthread_mutex_lock(&(d_st->mutex));
-    for(pslvmb_readohr = slvmbreadohr_tbl;
-            (pslvmb_readohr-slvmbreadohr_tbl) < SLVMB_READ_OHR_TBL_SIZE; pslvmb_readohr++ )
-        if(pslvmb_readohr->addr == addr || pslvmb_readohr->addr == ANY_ADDRESS)
-            rtn = (*pslvmb_readohr->proc)(d_st,mb_query);
+    for(pmb_conf_readohr = mb_confreadohr_tbl;
+            (pmb_conf_readohr-mb_confreadohr_tbl) < SLVMB_READ_OHR_TBL_SIZE; pmb_conf_readohr++ )
+        if(pmb_conf_readohr->addr == addr || pmb_conf_readohr->addr == ANY_ADDRESS)
+            rtn = (*pmb_conf_readohr->proc)(d_st,mb_query);
     pthread_mutex_unlock(&(d_st->mutex));
     return rtn;
 }
 
-int writeAOHReg(DATA_ST *d_st, uint8_t *mb_query)
+/**
+ *  writeAOHReg
+ *  Write Analog Holding Register
+ */
+static int writeAOHReg(DATA_ST *d_st, uint8_t *mb_query)
 {
     int rtn = 0;
     uint16_t addr = MODBUS_GET_INT16_FROM_INT8(mb_query, MB_DATA_ADDR);
@@ -174,7 +209,11 @@ int writeAOHReg(DATA_ST *d_st, uint8_t *mb_query)
     return rtn;
 }
 
-int writeAOMHReg(DATA_ST *d_st, uint8_t *mb_query)
+/**
+ *  writeMAOHReg
+ *  Write Multiple Analog Holding Registers
+ */
+static int writeAOMHReg(DATA_ST *d_st, uint8_t *mb_query)
 {
   uint16_t addr = MODBUS_GET_INT16_FROM_INT8(mb_query, MB_DATA_ADDR);
   uint16_t value = MODBUS_GET_INT16_FROM_INT8(mb_query, MB_DATA_SINGLE_VALUE);
@@ -185,12 +224,12 @@ int writeAOMHReg(DATA_ST *d_st, uint8_t *mb_query)
 /**
  *	Function Code	Action		      Name
  *	01 (01 hex)   Read		        Discrete Output Coils
- *	05 (05 hex)   Write single	  Discrete Output Coil
+ *	05 (05 hex)   Write single	    Discrete Output Coil
  *	15 (0F hex)   Write multiple	Discrete Output Coils
- *	02 (02 hex)   Read            Discrete Input Contacts
- *	04 (04 hex)   Read            Analog Input Registers
- *	03 (03 hex)   Read            Analog Output Holding Registers
- *	06 (06 hex)   Write single	  Analog Output Holding Register
+ *	02 (02 hex)   Read              Discrete Input Contacts
+ *	04 (04 hex)   Read              Analog Input Registers
+ *	03 (03 hex)   Read              Analog Output Holding Registers
+ *	06 (06 hex)   Write single	    Analog Output Holding Register
  *	16 (10 hex)   Write multiple	Analog Output Holding Registers
  */
 static MBFUNC_PROC_ST mbfunc_tbl[]=
@@ -206,6 +245,10 @@ static MBFUNC_PROC_ST mbfunc_tbl[]=
 };
 #define MBFUNC_PROC_TBL_SIZE (sizeof(mbfunc_tbl)/sizeof(MBFUNC_PROC_ST))
 
+/**
+ * get_mbfunction
+ * Loock up table search routine for modBUS function processing
+ */
 int get_mbfunction(DATA_ST *d_st, uint8_t *mb_query)
 {
   MBFUNC_PROC_ST *pfproc;
@@ -216,10 +259,14 @@ int get_mbfunction(DATA_ST *d_st, uint8_t *mb_query)
   return 0;
 }
 
-/**
+/*
  * Threads
  */
-void *main_cmd(void *data)
+
+/**
+ * Command shell thread
+ */
+static void *main_cmd(void *data)
 {
     SHELL *shell = init_shell(&getchar, &putchar, (void *) data); 
     while(1)
@@ -230,7 +277,10 @@ void *main_cmd(void *data)
 	pthread_exit(NULL);
 }
 
-void *sim_mng(void *data)
+/**
+ * Simulation Manager Thread
+ */
+static void *sim_mng(void *data)
 {
     int rtn;
     DATA_ST *d_st = (DATA_ST*) data;
@@ -245,7 +295,7 @@ void *sim_mng(void *data)
 }
 
 /**
- *  SlaveMB Main
+ *  Main routine
  */
 int main(int argc, char *argv[])
 {
@@ -257,21 +307,20 @@ int main(int argc, char *argv[])
 
     mb_query = (uint8_t*) malloc(MODBUS_RTU_MAX_ADU_LENGTH);
 
-    /*Las Opciones de cli reemplazan cualquier otra Properties/DB */
-    while ((c = getopt_long(argc, argv, "hs:p:b:l:v", longopts, NULL)) != EOF)
+    while ((c = getopt_long(argc, argv, _opts, longopts, NULL)) != EOF)
         switch (c)
         {
             case 'h':     /* help */
                 usage(stdout, 0);
                 break;
             case 's':     /* Slave ID */
-                slvmb.id = atoi(optarg);
+                mb_conf.id = atoi(optarg);
                 break;
             case 'p':     /* Port */
-                strcpy(slvmb.port_tty,optarg);
+                strcpy(mb_conf.port_tty,optarg);
                 break;
             case 'b':     /* Baudrate */
-                slvmb.port_baud = atoi(optarg);
+                mb_conf.port_baud = atoi(optarg);
                 break;
             case 'l':     /* Loop */
                 d_st.sim_time = atoi(optarg);
@@ -286,12 +335,18 @@ int main(int argc, char *argv[])
                 usage(stderr, 1);
         }
 
-    d_st.mb_conn = modbus_new_rtu(slvmb.port_tty,
-            slvmb.port_baud,
-            slvmb.port_parity,
-            slvmb.port_ndbits,
-            slvmb.port_nsbits);
-    modbus_set_slave(d_st.mb_conn, slvmb.id);
+    /*
+     * Mandatory argument
+     */
+    if(strlen(mb_conf.port_tty) == 0)
+            usage(stderr, 1);
+
+    d_st.mb_conn = modbus_new_rtu(mb_conf.port_tty,
+            mb_conf.port_baud,
+            mb_conf.port_parity,
+            mb_conf.port_ndbits,
+            mb_conf.port_nsbits);
+    modbus_set_slave(d_st.mb_conn, mb_conf.id);
 
     modbus_set_debug(d_st.mb_conn, d_st.debug);
     modbus_set_error_recovery(d_st.mb_conn,
@@ -304,10 +359,10 @@ int main(int argc, char *argv[])
             UT_REGISTERS_NB_POINTS,
             UT_INPUT_REGISTERS_NB_POINTS);
     if (d_st.mb_mapping == NULL)
-        slavmb_error(EXIT_SLVMB, "Falla Mapeo Memoria ModBus: %s\n", modbus_strerror(errno));
+        main_error(EXIT_CODE, "ModBUS mapping error: %s\n", modbus_strerror(errno));
 
     if((rc = modbus_connect(d_st.mb_conn)) < 0)
-        slavmb_error(EXIT_SLVMB, "Falla Coneccion ModBus  %s\n", modbus_strerror(errno));
+        main_error(EXIT_CODE, "ModBUS connection error: %s\n", modbus_strerror(errno));
     else{
 
         init_var(&d_st,mb_query);
@@ -328,6 +383,6 @@ int main(int argc, char *argv[])
         pthread_join(main_threads[1], NULL);
     }
 
-    slavmb_exit(EXIT_SUCCESS);
+    _exit(EXIT_SUCCESS);
     return 0;
 }

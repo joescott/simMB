@@ -1,7 +1,15 @@
+/**
+ * @file debug.c
+ *  Debug routines
+ */
+
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdbool.h>
 
+/**
+ * Debug printf implementation
+ */
 void debug_printf(bool debug, const char *fmt, ...)
 {
 	va_list ap;

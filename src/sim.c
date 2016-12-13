@@ -1,7 +1,7 @@
 #include <unistd.h>
 
 #include "sim.h"
-#include "simmb.h"
+#include "common.h"
 #include "utils.h"
 #include "mb_map.h"
 #include "debug.h"
@@ -12,7 +12,6 @@ static const char * sim_st_debug[]=
     "Buscando maximo",
     "Maximo alcanzado"
 };
-
 
 RTN_SIM sim(SIM_ARGS)
 {
