@@ -1,0 +1,215 @@
+/**
+ * @file shell.c
+ * @author Jorge Courett
+ * @date 11/23/2016
+ * @brief Command Shell interface implementation.
+ *
+ * Implementation of a simple command line interface.
+ *
+ */
+
+#include "shell.h"
+#include "shell_cmds.h"
+
+#include <string.h>
+#include <stdio.h>
+#include <stdarg.h>
+
+#ifdef SHELL_DEBUG
+    #define SHELL_DEBUG_PRINT(fmt, ...) printf(fmt,__VA_ARGS__)
+#else
+    #define SHELL_DEBUG_PRINT(fmt, ...)
+#endif
+
+/** 
+ * @brief Static data structure
+ *  This data structure hold all methods and storages 
+ *  needed to support shell functionality.  
+ * @note Initialization compliant with C99 
+ */
+static SHELL shell = {
+        .version = {V_MAJOR, V_MINOR, V_BUILD}
+};
+
+/**
+ * @brief Default shell printf function 
+ *  This function implement printf functionality using 
+ *  defined method put_char_func to put chars on defined output channel.
+ */
+static void default_shell_printf(const char *fmt, ...)
+{
+    char *pc;
+    va_list ap;
+    va_start(ap, fmt);
+    vsprintf(shell.out_buffer, fmt, ap);
+    va_end(ap);
+
+    for(pc=shell.out_buffer; *pc != '\0'; pc++)
+        (*shell.put_char_func)((int)*pc);
+}
+
+/**
+ * Test if line terminator was reached.
+ */
+static int is_terminator_found(SHELL *shell)
+{
+   return (strcmp((shell->pwrite - SHELL_LINE_TERMINATOR_LEN), 
+               SHELL_LINE_TERMINATOR) == 0);
+}
+
+/**
+ * Test if line terminator was reached.
+ */
+static void add_cmd_elm(SHELL *shell, char *pr)
+{
+    strcpy(shell->argv[shell->argc-1], pr);
+}
+
+/**
+ * Shell initialization routine. 
+ */
+SHELL *init_shell(GET_CHAR_SHELL_FUNC get_char_func, 
+	PUT_CHAR_SHELL_FUNC put_char_func,
+	void *data)
+{
+    shell.get_char_func = get_char_func;
+    shell.put_char_func = put_char_func;
+    shell.pwrite = shell.in_buffer;
+    shell.printf = default_shell_printf;
+	shell.data = data;
+    memset(shell.var, 0, sizeof(SHELL_VARS) * NUM_OF_SHELL_VARS);
+    return &shell;
+}
+
+/**
+ * Shell read line routine. This function perform readings using 
+ * get_char_func methold of shell model.
+ */
+RTN_SLINE_READ read_line(SHELL *shell)
+{
+    int c;
+    RTN_SLINE_READ rtn = RTN_SLINE_READ_FAIL;
+    while((c = (*shell->get_char_func)()) != 0)
+    {
+        SHELL_DEBUG_PRINT("Input: |%c|%02X|\n",(char)c, c);
+        if(c == EOF)
+            continue;
+
+        if(shell->pwrite - shell->in_buffer >= MAX_BUFFER_SHELL_SIZE)
+        {
+            shell->pwrite = shell->in_buffer;
+            rtn = RTN_SLINE_READ_EXCEEDED;
+            break; 
+        }
+
+        *shell->pwrite++ = c;
+        *shell->pwrite = '\0';
+        if(shell->pwrite - shell->in_buffer > SHELL_LINE_TERMINATOR_LEN && 
+                is_terminator_found(shell))
+        {
+            *(shell->pwrite - SHELL_LINE_TERMINATOR_LEN) = '\0';
+            shell->pwrite = shell->in_buffer;
+            rtn = RTN_SLINE_READ_OK;
+            break; 
+        }
+    }
+   
+    return rtn;
+}
+
+/**
+ * Shell processing line routine. This function perform processing of 
+ * line readed with read_line function.
+ * Processing have 3 steps:
+ *     -# Looking for first character non equal to SHELL_LINE_SEPARATOR.
+ *        This help to skip beginning spaces. 
+ *     -# Looking for separators and group characters and replace them with nulls.
+ *     -# Determination of each argument.
+ *
+ */
+RTN_CMD_PROC proc_line(SHELL *shell)
+{
+    char *pc;
+    char *pr;
+    int lidx, start, sep, group;
+    for(shell->argc = lidx = 0, start=0, sep = 0, group = 0, 
+            pr = pc = shell->in_buffer; *pc != '\0';pc++)
+    {
+        if(*pc == SHELL_LINE_ARGS_GROUP) 
+        {
+            *pc = '\0';
+            group =  !group;
+
+        }else if(*pc != SHELL_LINE_SEPARATOR) {
+            start = 1;
+            if(sep == 1) 
+                pr = pc; 
+            sep = 0;
+        }else if(*pc == SHELL_LINE_SEPARATOR) {
+
+            if(group)
+                continue;
+
+            sep = 1;
+            *pc = '\0';
+
+            if(shell->argc != lidx)
+                add_cmd_elm(shell, pr);
+
+            lidx = shell->argc;
+        }
+            
+        if(start && (pc == shell->in_buffer || *(pc-1) == '\0') && *pc != '\0')
+            if(shell->argc++ >= MAX_ARGS_CNT)
+                return RTN_CMD_MAX_ARGS;
+    }
+    add_cmd_elm(shell, pr);
+    return do_shell_cmd(shell);
+}
+
+/**
+ * This function perform setting of a shell variable addresed by id.  
+ */
+int set_shell_var(SHELL *shell, int id, SHELL_VAR_TYPE value)
+{
+    if(id <= 0 || id > NUM_OF_SHELL_VARS)
+        return SV_ERR_CODE_WRONG_ID;
+
+    shell->var[id].value = value;
+    shell->var[id].status = 1;
+
+    return id;
+}
+
+/**
+ * This function get value of a shell variable from provided id.
+ */
+int get_shell_var(SHELL *shell, int id, SHELL_VAR_TYPE *value)
+{
+    if(id <= 0 || id > NUM_OF_SHELL_VARS)
+        return SV_ERR_CODE_WRONG_ID;
+
+    if(shell->var[id].status == 0)
+        return SV_ERR_CODE_VAR_NOT_SET;
+
+    *value = shell->var[id].value;
+    return id;
+}
+
+/**
+ * This function reset value of a shell variable from provided id or 
+ *  all if id = 0.
+ */
+int reset_shell_var(SHELL *shell, int id)
+{
+
+    if(id < 0 || id > NUM_OF_SHELL_VARS)
+        return SV_ERR_CODE_WRONG_ID;
+
+    if(id == 0)
+        memset(shell->var, 0, sizeof(SHELL_VARS) * NUM_OF_SHELL_VARS);
+    else
+        memset(&shell->var[id], 0, sizeof(SHELL_VARS));
+
+    return id;
+}

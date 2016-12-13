@@ -1,0 +1,351 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ANY_ADDRESS	mbhmi.h	19;"	d
+ASFLAGS	Makefile	/^ASFLAGS     = -MD$/;"	m
+ASRC	Makefile	/^ASRC        = $/;"	m
+BEGIN_ADDRESS	mbhmi.h	20;"	d
+BIN	Makefile	/^BIN         = $(PROGNAME)$/;"	m
+BUILD_DATE	build.mak	/^BUILD_DATE=$$(date +'%Y%m%d')$/;"	m
+BUILD_NUMBER	build.mak	/^BUILD_NUMBER=$$(cat $(BUILD_NUMBER_FILE)) $/;"	m
+BUILD_NUMBER_FILE	Makefile	/^BUILD_NUMBER_FILE=build.txt$/;"	m
+CC	Makefile	/^CC          = gcc$/;"	m
+CFLAGS	Makefile	/^CFLAGS      = -MD -g -Wall -DDEBUG -DTYPE_ADQ -D__LOGFILE=\/var\/log\/tklogs\/tenlek.log$/;"	m
+CMD_FAIL_RESPONSE	shell_cmds.c	34;"	d	file:
+CMD_FUNC	shell_cmds.h	/^typedef RTN_CMD_PROC (*CMD_FUNC)(SHELL *);$/;"	t
+CMD_OK_RESPONSE	shell_cmds.c	29;"	d	file:
+CSRC	Makefile	/^CSRC        = $(MB_SRC) $/;"	m
+DATA_ST	simmb.h	/^}DATA_ST;$/;"	t	typeref:struct:__anon10
+DELIMITER	properties.h	40;"	d
+DELIMITERSIZE	properties.h	41;"	d
+DEPS	Makefile	/^DEPS        = $(OBJS:.o=.d) $/;"	m
+END_ADDRESS	mbhmi.h	23;"	d
+EXIT_SLVMB	simmb.h	/^enum {EXIT_SLVMB, WARM_SLVMB };$/;"	e	enum:__anon12
+FALSE	properties.h	43;"	d
+FUNC_ADDRESS	mbhmi.h	21;"	d
+GET_CHAR_SHELL_FUNC	shell.h	/^typedef int (*GET_CHAR_SHELL_FUNC)(void);$/;"	t
+GET_MB_HR	mb_map.h	21;"	d
+HR_ADDR_DESP	mb_map.h	9;"	d
+HR_ADDR_INI_GRAF	mb_map.h	17;"	d
+HR_ADDR_NONE	mb_map.h	11;"	d
+HR_ADDR_PESO	mb_map.h	7;"	d
+HR_ADDR_PESO_MAX	mb_map.h	15;"	d
+HR_ADDR_STATUS	mb_map.h	13;"	d
+HR_BITS_DESP	mb_map.h	10;"	d
+HR_BITS_INI_GRAF	mb_map.h	18;"	d
+HR_BITS_NONE	mb_map.h	12;"	d
+HR_BITS_PESO	mb_map.h	8;"	d
+HR_BITS_PESO_MAX	mb_map.h	16;"	d
+HR_BITS_STATUS	mb_map.h	14;"	d
+HTML_CONVERT	utils.c	/^}HTML_CONVERT;$/;"	t	typeref:struct:__anon16	file:
+INCLUDE	Makefile	/^INCLUDE     = -I.$/;"	m
+ISDEBUG	properties.h	44;"	d
+LDFLAGS	Makefile	/^LDFLAGS     = -lpthread -lrt -lc -lm -lmodbus$/;"	m
+LDLIBS	Makefile	/^LDLIBS      = `mysql_config --libs` -L.$/;"	m
+MAXDATASIZE	properties.h	37;"	d
+MAXPROPSIZE	properties.h	38;"	d
+MAXVALUESIZE	properties.h	39;"	d
+MAX_ARGS_CNT	shell_conf.h	38;"	d
+MAX_ARGS_LEN	shell_conf.h	32;"	d
+MAX_BUFFER_SHELL_SIZE	shell_conf.h	26;"	d
+MAX_LEN_FILE_NAME	utils.h	97;"	d
+MAX_MSG_SIZE	error.h	6;"	d
+MAX_NUM_VAR	mbhmi.h	11;"	d
+MBFUNC_PROC_ST	simmb.h	/^}MBFUNC_PROC_ST;$/;"	t	typeref:struct:__anon11
+MBFUNC_PROC_TBL_SIZE	simmb.c	204;"	d	file:
+MBToValue	utils.c	/^int MBToValue(uint16_t *tab_registers,int addrs, int bits)$/;"	f
+MB_DATA_ADDR	simmb.h	/^	MB_DATA_ADDR,$/;"	e	enum:__anon13
+MB_DATA_ADDRH	simmb.h	/^	MB_DATA_ADDRH = MB_DATA_ADDR,$/;"	e	enum:__anon13
+MB_DATA_ADDRL	simmb.h	/^	MB_DATA_ADDRL,$/;"	e	enum:__anon13
+MB_DATA_BYTES	simmb.h	/^	MB_DATA_BYTES,$/;"	e	enum:__anon13
+MB_DATA_REG	simmb.h	/^	MB_DATA_REG$/;"	e	enum:__anon13
+MB_DATA_REG	simmb.h	104;"	d
+MB_DATA_RNUM	simmb.h	/^	MB_DATA_RNUM, $/;"	e	enum:__anon13
+MB_DATA_RNUMH	simmb.h	/^	MB_DATA_RNUMH = MB_DATA_RNUM,$/;"	e	enum:__anon13
+MB_DATA_RNUML	simmb.h	/^	MB_DATA_RNUML,$/;"	e	enum:__anon13
+MB_DATA_SINGLE_VALUE	simmb.h	/^	MB_DATA_SINGLE_VALUE = MB_DATA_RNUM, $/;"	e	enum:__anon13
+MB_FUNC_CODE	simmb.h	/^	MB_FUNC_CODE,$/;"	e	enum:__anon13
+MB_SLV_ADDR	simmb.h	/^	MB_SLV_ADDR, $/;"	e	enum:__anon13
+MB_SRC	Makefile	/^MB_SRC      = debug.c utils.c error.c simmb.c funcsimmb.c shell.c shell_cmds.c sim.c$/;"	m
+MLLS_ZERO	utils.c	444;"	d	file:
+NUM_OF_SHELL_VARS	shell_conf.h	60;"	d
+NUM_SHELL_CMDS	shell_cmds.c	185;"	d	file:
+NUM_SIM_ST	sim.h	/^    NUM_SIM_ST,$/;"	e	enum:__anon2
+OBJS	Makefile	/^OBJS        = $(CSRC:.c=.o) $(ASRC:.S=.o)$/;"	m
+P2ROUNDUP	utils.h	190;"	d
+PRINTF_SHELL_FUNC	shell.h	/^typedef void (*PRINTF_SHELL_FUNC)(const char *,...);$/;"	t
+PROGNAME	Makefile	/^PROGNAME    = simmb$/;"	m
+PROPERTIE_ST	simmb.h	/^}PROPERTIE_ST;$/;"	t	typeref:struct:__anon9
+PROPERTY	properties.h	/^} PROPERTY;$/;"	t	typeref:struct:list
+PUT_CHAR_SHELL_FUNC	shell.h	/^typedef int (*PUT_CHAR_SHELL_FUNC)(int);$/;"	t
+RTN_CMD_FAIL	shell.h	/^    RTN_CMD_FAIL,               \/**< Command fail*\/$/;"	e	enum:__anon4
+RTN_CMD_MAX_ARGS	shell.h	/^    RTN_CMD_MAX_ARGS,           \/**< Max number of arguments reached*\/$/;"	e	enum:__anon4
+RTN_CMD_NOTFOUND	shell.h	/^    RTN_CMD_NOTFOUND,           \/**< Command not found*\/$/;"	e	enum:__anon4
+RTN_CMD_NUM_ARGS_INCORRECT	shell.h	/^    RTN_CMD_NUM_ARGS_INCORRECT, \/**< Incorrect number of arguments provided*\/$/;"	e	enum:__anon4
+RTN_CMD_OK	shell.h	/^    RTN_CMD_OK,                 \/**< Command Ok*\/$/;"	e	enum:__anon4
+RTN_CMD_PROC	shell.h	/^} RTN_CMD_PROC; $/;"	t	typeref:enum:__anon4
+RTN_SIM	sim.h	/^}RTN_SIM;$/;"	t	typeref:enum:__anon1
+RTN_SIM_EXIT	sim.h	/^    RTN_SIM_EXIT,$/;"	e	enum:__anon1
+RTN_SIM_LOOP	sim.h	/^    RTN_SIM_LOOP,$/;"	e	enum:__anon1
+RTN_SLINE_READ	shell.h	/^} RTN_SLINE_READ; $/;"	t	typeref:enum:__anon3
+RTN_SLINE_READ_EXCEEDED	shell.h	/^    RTN_SLINE_READ_EXCEEDED,    \/**< Line was exceeded in input characters*\/$/;"	e	enum:__anon3
+RTN_SLINE_READ_FAIL	shell.h	/^    RTN_SLINE_READ_FAIL         \/**< Failure read*\/$/;"	e	enum:__anon3
+RTN_SLINE_READ_OK	shell.h	/^    RTN_SLINE_READ_OK,          \/**< Read OK*\/$/;"	e	enum:__anon3
+SERVER_ID_DFT	simmb.h	11;"	d
+SET_MB_HR	mb_map.h	20;"	d
+SHELL	shell.h	/^} SHELL;$/;"	t	typeref:struct:__anon7
+SHELL_CMD	shell_cmds.h	/^}SHELL_CMD;$/;"	t	typeref:struct:__anon17
+SHELL_DEBUG_PRINT	shell.c	19;"	d	file:
+SHELL_DEBUG_PRINT	shell.c	21;"	d	file:
+SHELL_LINE_ARGS_GROUP	shell_conf.h	55;"	d
+SHELL_LINE_SEPARATOR	shell_conf.h	49;"	d
+SHELL_LINE_TERMINATOR	shell_conf.h	43;"	d
+SHELL_LINE_TERMINATOR_LEN	shell_conf.h	44;"	d
+SHELL_VARS	shell.h	/^}SHELL_VARS;$/;"	t	typeref:struct:__anon6
+SHELL_VAR_TYPE	shell.h	/^typedef int16_t SHELL_VAR_TYPE;$/;"	t
+SHELL_VERSION	shell.h	/^}SHELL_VERSION;$/;"	t	typeref:struct:t_version
+SIM_ARGS	sim.h	9;"	d
+SIM_STATUS	sim.h	/^}SIM_STATUS;$/;"	t	typeref:enum:__anon2
+SIM_ST_END	sim.h	/^    SIM_ST_END,$/;"	e	enum:__anon2
+SIM_ST_EXIT	sim.h	/^    SIM_ST_EXIT,$/;"	e	enum:__anon2
+SIM_ST_IDLE	sim.h	/^    SIM_ST_IDLE,$/;"	e	enum:__anon2
+SIM_ST_MAX	sim.h	/^    SIM_ST_MAX,$/;"	e	enum:__anon2
+SIM_ST_SEARCHING	sim.h	/^    SIM_ST_SEARCHING,$/;"	e	enum:__anon2
+SLVMB_ARGC	simmb.h	105;"	d
+SLVMB_FUNCTION_ST	funcsimmb.h	/^}SLVMB_FUNCTION_ST;$/;"	t	typeref:struct:__anon14
+SLVMB_PROC	funcsimmb.h	/^typedef int (*SLVMB_PROC)(DATA_ST *, uint8_t*); $/;"	t
+SLVMB_PROC_DEF	funcsimmb.c	/^SLVMB_PROC_DEF(get_var)$/;"	f
+SLVMB_PROC_DEF	funcsimmb.c	/^SLVMB_PROC_DEF(init_var)$/;"	f
+SLVMB_PROC_DEF	funcsimmb.c	/^SLVMB_PROC_DEF(set_var)$/;"	f
+SLVMB_PROC_DEF	funcsimmb.h	8;"	d
+SLVMB_READ_OHR_ST	funcsimmb.h	/^}SLVMB_READ_OHR_ST;$/;"	t	typeref:struct:__anon15
+SLVMB_READ_OHR_TBL_SIZE	simmb.c	146;"	d	file:
+SLVMB_ST	simmb.h	/^} SLVMB_ST;$/;"	t	typeref:struct:__anon8
+SV_ERR_CODE	shell.h	/^}SV_ERR_CODE;$/;"	t	typeref:enum:__anon5
+SV_ERR_CODE_VAR_NOT_SET	shell.h	/^    SV_ERR_CODE_VAR_NOT_SET,    \/**< Variable isn't set *\/$/;"	e	enum:__anon5
+SV_ERR_CODE_WRONG_ID	shell.h	/^    SV_ERR_CODE_WRONG_ID,       \/**< Wrong id selection *\/$/;"	e	enum:__anon5
+TOTAL_REGNUM	mbhmi.h	14;"	d
+TRUE	properties.h	42;"	d
+USAGE_STRING	simmb.c	51;"	d	file:
+UT_BITS_NB_POINTS	mbhmi.h	32;"	d
+UT_INPUT_BITS_NB_POINTS	mbhmi.h	33;"	d
+UT_INPUT_REGISTERS_NB_POINTS	mbhmi.h	35;"	d
+UT_REGISTERS_NB_POINTS	mbhmi.h	34;"	d
+VAR_ADDRESS	mbhmi.h	22;"	d
+VAR_REGNUM	mbhmi.h	12;"	d
+VERSION_FMT	version.h	5;"	d
+V_BUILD	shell_conf.h	20;"	d
+V_MAJOR	shell_conf.h	18;"	d
+V_MINOR	shell_conf.h	19;"	d
+WARM_SLVMB	simmb.h	/^enum {EXIT_SLVMB, WARM_SLVMB };$/;"	e	enum:__anon12
+_ERROR_FATAL	error.h	8;"	d
+_EVAL	macro_utils.h	5;"	d
+_GET_LOOP_INC_VAL	screen.h	37;"	d
+_LOG	error.h	14;"	d
+_LOOP_INIT	screen.h	28;"	d
+_LOOP_PRINT	screen.h	35;"	d
+_LOOP_SET	screen.h	41;"	d
+_NOLOG	error.h	16;"	d
+_PRINT_STATUS	screen.h	43;"	d
+_PROPERTIES_H_	properties.h	25;"	d
+_REGISTRAR	error.h	11;"	d
+_RESET_LOOP_INC_VAL	screen.h	39;"	d
+_SCREEN_BLINK	screen.h	25;"	d
+_SCREEN_BLUE	screen.h	17;"	d
+_SCREEN_BOLD	screen.h	20;"	d
+_SCREEN_CLEAR	screen.h	7;"	d
+_SCREEN_CLEAR_DOWN	screen.h	9;"	d
+_SCREEN_CLEAR_LINE	screen.h	8;"	d
+_SCREEN_DFT	screen.h	19;"	d
+_SCREEN_DIM	screen.h	23;"	d
+_SCREEN_GREEN	screen.h	14;"	d
+_SCREEN_GREY	screen.h	16;"	d
+_SCREEN_HOME	screen.h	10;"	d
+_SCREEN_LINE	screen.h	11;"	d
+_SCREEN_ML_LINE	screen.h	13;"	d
+_SCREEN_MR_LINE	screen.h	12;"	d
+_SCREEN_NCHAR	screen.h	21;"	d
+_SCREEN_RED	screen.h	15;"	d
+_SCREEN_REVERSE	screen.h	22;"	d
+_SCREEN_UNDERL	screen.h	24;"	d
+_SCREEN_YELL	screen.h	18;"	d
+_SET_LOOP_INC_VAL	screen.h	38;"	d
+_STR	macro_utils.h	4;"	d
+_VALIDHMI	mbhmi.h	37;"	d
+__DEBUG__	debug.h	2;"	d
+__ERROR_H__	error.h	2;"	d
+__FUNCHMI_H__	funcsimmb.h	2;"	d
+__MACRO_UTILS_H__	macro_utils.h	2;"	d
+__MBHMI_H__	mbhmi.h	2;"	d
+__MB_MAP__	mb_map.h	2;"	d
+__SCREEEN_H__	screen.h	2;"	d
+__SHELL_CMDS_H__	shell_cmds.h	12;"	d
+__SHELL_CONF_H__	shell_conf.h	13;"	d
+__SHELL_H__	shell.h	12;"	d
+__SIM_H__	sim.h	2;"	d
+__SLAVEMBHMI_H__	simmb.h	2;"	d
+__USE_XOPEN	utils.c	13;"	d	file:
+__UTIL_H__	utils.h	12;"	d
+__VERSION_H__	version.h	2;"	d
+_get_filename	utils.c	/^static char * _get_filename(const char *fmt, va_list ap)$/;"	f	file:
+abrir_puerto	utils.c	/^int abrir_puerto(xMBHandle *xMBMMaster, SERIAL_PORT_ST *serial)$/;"	f
+addProperty	properties.c	/^void addProperty (char* property, char* value) $/;"	f
+add_cmd_elm	shell.c	/^static void add_cmd_elm(SHELL *shell, char *pr)$/;"	f	file:
+add_time_mlls	utils.c	/^void add_time_mlls(struct timeval *time, int64_t mlls)$/;"	f
+addr	funcsimmb.h	/^	const unsigned int addr;$/;"	m	struct:__anon15
+argc	funcsimmb.h	/^	const uint8_t argc;$/;"	m	struct:__anon14
+argc	shell.h	/^    int  argc;                              \/**< Number of arguments counter. *\/$/;"	m	struct:__anon7
+argc	shell_cmds.h	/^    unsigned int argc;  \/**< Number of arguments expected *\/$/;"	m	struct:__anon17
+argv	shell.h	/^    char argv[MAX_ARGS_CNT][MAX_ARGS_LEN];  \/**< Command arguments. *\/$/;"	m	struct:__anon7
+atolld	utils.c	/^long long int atolld (const char* s)$/;"	f
+build	shell.h	/^    uint8_t build;    \/**< version build number   *\/$/;"	m	struct:t_version
+calc_parity	utils.c	/^char calc_parity(const char *charaux)$/;"	f
+calc_serialport	utils.c	/^void calc_serialport(const char *charaux, char *msp)$/;"	f
+cerrar_puerto	utils.c	/^int cerrar_puerto(xMBHandle *xMBMMaster)$/;"	f
+chtbl	utils.c	/^static HTML_CONVERT chtbl[]={$/;"	v	file:
+cleanup	properties.c	/^void cleanup (void)$/;"	f
+cmd	shell_cmds.h	/^    char *cmd;          \/**< Command string *\/$/;"	m	struct:__anon17
+cmd_func	shell_cmds.h	/^    CMD_FUNC cmd_func;  \/**< Pointer to function who implements command *\/$/;"	m	struct:__anon17
+cstr	utils.c	/^  const char * const cstr;$/;"	m	struct:__anon16	file:
+d_st	simmb.c	/^static DATA_ST d_st=$/;"	v	file:
+data	shell.h	/^    void *data;                             \/**< General data pointer *\/$/;"	m	struct:__anon7
+debug	simmb.h	/^    bool debug;$/;"	m	struct:__anon10
+debug_modbus	simmb.h	/^    bool debug_modbus;$/;"	m	struct:__anon10
+debug_printf	debug.c	/^void debug_printf(bool debug, const char *fmt, ...)$/;"	f
+default_shell_printf	shell.c	/^static void default_shell_printf(const char *fmt, ...)$/;"	f	file:
+del_file_at	utils.c	/^del_file_at(char *filename, unsigned int sec_diff_time )$/;"	f
+do_cmd_debug	shell_cmds.c	/^static RTN_CMD_PROC do_cmd_debug(SHELL *shell)$/;"	f	file:
+do_cmd_echo	shell_cmds.c	/^static RTN_CMD_PROC do_cmd_echo(SHELL *shell)$/;"	f	file:
+do_cmd_get	shell_cmds.c	/^static RTN_CMD_PROC do_cmd_get(SHELL *shell)$/;"	f	file:
+do_cmd_help	shell_cmds.c	/^static RTN_CMD_PROC do_cmd_help(SHELL *shell)$/;"	f	file:
+do_cmd_reset	shell_cmds.c	/^static RTN_CMD_PROC do_cmd_reset(SHELL *shell)$/;"	f	file:
+do_cmd_set	shell_cmds.c	/^static RTN_CMD_PROC do_cmd_set(SHELL *shell)$/;"	f	file:
+do_cmd_turn	shell_cmds.c	/^static RTN_CMD_PROC do_cmd_turn(SHELL *shell)$/;"	f	file:
+do_cmd_version	shell_cmds.c	/^static RTN_CMD_PROC do_cmd_version(SHELL *shell)$/;"	f	file:
+do_shell_cmd	shell_cmds.c	/^RTN_CMD_PROC do_shell_cmd(SHELL *shell)$/;"	f
+error_fatal	error.c	/^void error_fatal(const char *logfile, const char *Nfuncion, const int Nline, $/;"	f
+fail_cmd	shell_cmds.c	/^static RTN_CMD_PROC fail_cmd(RTN_CMD_PROC proc, SHELL *shell)$/;"	f	file:
+file_exists	utils.c	/^bool file_exists(const char *fmt, ...)$/;"	f
+file_exists_read_int	utils.c	/^bool file_exists_read_int( int *value, const char *fmt, ...)$/;"	f
+file_exists_read_ints	utils.c	/^bool file_exists_read_ints(const char *fmtv,int cv,int value[],const char *fmt,...)$/;"	f
+file_exists_read_uint	utils.c	/^bool file_exists_read_uint( uint32_t *value, const char *fmt, ...)$/;"	f
+file_exists_read_uint16	utils.c	/^bool file_exists_read_uint16(uint16_t *value, const char *fmt, ...)$/;"	f
+file_exists_read_uint16_t1	utils.c	/^bool file_exists_read_uint16_t1(uint16_t *value,const char *value_fmt, const char *fmt, ...)$/;"	f
+file_exists_read_uint16_t2	utils.c	/^bool file_exists_read_uint16_t2(uint16_t *value,const char *value_fmt, const char *fmt, ...)$/;"	f
+file_exists_test_str	utils.c	/^bool file_exists_test_str(const char *fmtv,const char *test_value,const char *fmt,...)$/;"	f
+file_write	utils.c	/^bool file_write(char *filename, const char *fmt, ...)$/;"	f
+fline	properties.c	/^char fline[MAXDATASIZE];$/;"	v
+fp	properties.c	/^FILE *fp;$/;"	v
+getProperty	properties.c	/^void getProperty (char* property, char* value)$/;"	f
+getPropertyCount	properties.c	/^int getPropertyCount()$/;"	f
+getSHMSize	utils.c	/^int getSHMSize(const char *msfilename)$/;"	f
+get_char_func	shell.h	/^    GET_CHAR_SHELL_FUNC get_char_func;      \/**< Get char function pointer. *\/$/;"	m	struct:__anon7
+get_circular_index	utils.c	/^int get_circular_index(int orig, int increment, int size)$/;"	f
+get_csv_field	utils.c	/^const char* get_csv_field(char* line, int num,const char *sep)$/;"	f
+get_diff_time_now	utils.c	/^double get_diff_time_now(time_t since)$/;"	f
+get_diff_time_now_ms	utils.c	/^int64_t get_diff_time_now_ms(struct timeval since, struct timeval *now)$/;"	f
+get_file_cTime	utils.c	/^get_file_cTime(char *filename)$/;"	f
+get_filename	utils.c	/^char * get_filename(const char *fmt, ...)$/;"	f
+get_fulltime	utils.c	/^char* get_fulltime()$/;"	f
+get_fulltime_mlls	utils.c	/^char* get_fulltime_mlls()$/;"	f
+get_mbfunction	simmb.c	/^int get_mbfunction(DATA_ST *d_st, uint8_t *mb_query)$/;"	f
+get_now	utils.c	/^struct tm *get_now()$/;"	f
+get_shell_var	shell.c	/^int get_shell_var(SHELL *shell, int id, SHELL_VAR_TYPE *value)$/;"	f
+get_time_now	utils.c	/^time_t get_time_now()$/;"	f
+get_time_now_ms	utils.c	/^struct timeval get_time_now_ms()$/;"	f
+get_time_str	utils.c	/^struct timeval get_time_str(const char* fmt, const char *str)$/;"	f
+get_var	funcsimmb.h	/^SLVMB_PROC_DEF(get_var);$/;"	v
+help	shell_cmds.h	/^    char *help;         \/**< Help message *\/$/;"	m	struct:__anon17
+hstr	utils.c	/^  const char * const hstr;$/;"	m	struct:__anon16	file:
+htmlToString	utils.c	/^char * htmlToString(const char *str)$/;"	f
+id	funcsimmb.h	/^	const uint8_t id;$/;"	m	struct:__anon14
+id	simmb.h	/^	const uint8_t id; $/;"	m	struct:__anon11
+id	simmb.h	/^    int id;$/;"	m	struct:__anon8
+in_buffer	shell.h	/^    char in_buffer[MAX_BUFFER_SHELL_SIZE];  \/**< Input command Line buffer. *\/$/;"	m	struct:__anon7
+initSignals	simmb.c	/^static void initSignals()$/;"	f	file:
+init_shell	shell.c	/^SHELL *init_shell(GET_CHAR_SHELL_FUNC get_char_func, $/;"	f
+init_var	funcsimmb.h	/^SLVMB_PROC_DEF(init_var);$/;"	v
+intToMBTabReg	utils.c	/^void intToMBTabReg(uint16_t *tab_registers,int addrs, unsigned int valor)$/;"	f
+intToMBTabRegHMI	utils.c	/^void intToMBTabRegHMI(uint16_t *tab_registers,int addrs, unsigned int valor)$/;"	f
+is_terminator_found	shell.c	/^static int is_terminator_found(SHELL *shell)$/;"	f	file:
+list	properties.h	/^typedef struct list {$/;"	s
+listProperties	properties.c	/^void listProperties (void)$/;"	f
+loadProperties	properties.c	/^void loadProperties()$/;"	f
+loadPropertyFile	properties.c	/^FILE *loadPropertyFile( char * filename )$/;"	f
+longopts	simmb.c	/^struct option longopts[] =$/;"	v	typeref:struct:option
+main	simmb.c	/^int main(int argc, char *argv[])$/;"	f
+main_cmd	simmb.c	/^void *main_cmd(void *data)$/;"	f
+main_threads	simmb.c	/^static pthread_t main_threads[2];$/;"	v	file:
+major	shell.h	/^    uint8_t major;    \/**< version major number   *\/$/;"	m	struct:t_version
+mb_conn	simmb.h	/^    modbus_t *mb_conn;$/;"	m	struct:__anon10
+mb_mapping	simmb.h	/^    modbus_mapping_t  *mb_mapping;$/;"	m	struct:__anon10
+mb_query	simmb.c	/^static uint8_t*  mb_query;$/;"	v	file:
+mbfunc_tbl	simmb.c	/^static MBFUNC_PROC_ST mbfunc_tbl[]=$/;"	v	file:
+minor	shell.h	/^    uint8_t minor;    \/**< version minor number   *\/$/;"	m	struct:t_version
+minutoActual	utils.c	/^int minutoActual()$/;"	f
+minutoSiguiente	utils.c	/^int minutoSiguiente()$/;"	f
+mutex	simmb.h	/^    pthread_mutex_t mutex;$/;"	m	struct:__anon10
+next	properties.h	/^    struct list *next;$/;"	m	struct:list	typeref:struct:list::list
+nodep	properties.c	/^PROPERTY *nodep= NULL;  $/;"	v
+out_buffer	shell.h	/^    char out_buffer[MAX_BUFFER_SHELL_SIZE]; \/**< Input command Line buffer. *\/$/;"	m	struct:__anon7
+paridad_formato_eMB	utils.c	/^eMBSerialParity paridad_formato_eMB ( const char paridad )$/;"	f
+port_baud	simmb.h	/^	int  port_baud;$/;"	m	struct:__anon8
+port_ndbits	simmb.h	/^	int  port_ndbits;$/;"	m	struct:__anon8
+port_nsbits	simmb.h	/^	int  port_nsbits;$/;"	m	struct:__anon8
+port_parity	simmb.h	/^	char port_parity;$/;"	m	struct:__anon8
+port_tty	simmb.h	/^	char port_tty[20];$/;"	m	struct:__anon8
+print_version	simmb.c	/^static void print_version()$/;"	f	file:
+printf	shell.h	/^    PRINTF_SHELL_FUNC printf;               \/**< Printf function pointer. *\/$/;"	m	struct:__anon7
+proc	funcsimmb.h	/^	SLVMB_PROC proc; $/;"	m	struct:__anon14
+proc	funcsimmb.h	/^	SLVMB_PROC proc; $/;"	m	struct:__anon15
+proc	simmb.h	/^	int (*proc)(DATA_ST *, uint8_t*); $/;"	m	struct:__anon11
+proc_line	shell.c	/^RTN_CMD_PROC proc_line(SHELL *shell)$/;"	f
+property	properties.h	/^    char *property;$/;"	m	struct:list
+propertyCount	properties.c	/^int propertyCount =0;$/;"	v
+puerto_formato_eMB	utils.c	/^int puerto_formato_eMB ( const char* puerto )$/;"	f
+put_char_func	shell.h	/^    PUT_CHAR_SHELL_FUNC put_char_func;      \/**< Put char function pointer. *\/$/;"	m	struct:__anon7
+pwrite	shell.h	/^    char *pwrite;                           \/**< Write pointer. *\/$/;"	m	struct:__anon7
+readAOHReg	simmb.c	/^int readAOHReg(DATA_ST *d_st, uint8_t *mb_query)$/;"	f
+readDOCoil	simmb.c	/^int readDOCoil(DATA_ST *d_st, uint8_t *mb_query)$/;"	f
+read_line	shell.c	/^RTN_SLINE_READ read_line(SHELL *shell)$/;"	f
+registrar	error.c	/^void registrar(const char *logfile, const char *header,$/;"	f
+remove_file	utils.c	/^bool remove_file(const char *fmt, ...)$/;"	f
+replaceString	utils.c	/^char * replaceString($/;"	f
+reset_shell_var	shell.c	/^int reset_shell_var(SHELL *shell, int id)$/;"	f
+searchString	properties.c	/^int searchString (const char *search, const char *string, int offset)$/;"	f
+segundoActual	utils.c	/^int segundoActual()$/;"	f
+set_shell_var	shell.c	/^int set_shell_var(SHELL *shell, int id, SHELL_VAR_TYPE value)$/;"	f
+set_time_str	utils.c	/^char *set_time_str(const char* fmt, const char mlls_sep, struct timeval time)$/;"	f
+set_var	funcsimmb.h	/^SLVMB_PROC_DEF(set_var);$/;"	v
+shell	shell.c	/^static SHELL shell = {$/;"	v	file:
+shell_cmd_tbl	shell_cmds.c	/^const SHELL_CMD shell_cmd_tbl[]={$/;"	v
+sigHandler	simmb.c	/^static void sigHandler(int signal)$/;"	f	file:
+sim	sim.c	/^RTN_SIM sim(SIM_ARGS)$/;"	f
+sim_cnt	simmb.h	/^    int  sim_cnt;$/;"	m	struct:__anon10
+sim_mng	simmb.c	/^void *sim_mng(void *data)$/;"	f
+sim_status	simmb.h	/^    int  sim_status;$/;"	m	struct:__anon10
+sim_time	simmb.h	/^    int  sim_time;$/;"	m	struct:__anon10
+slavmb_error	simmb.c	/^static void slavmb_error(int exit, const char *fmt, ...)$/;"	f	file:
+slavmb_exit	simmb.c	/^static void slavmb_exit(int status)$/;"	f	file:
+slvmb	simmb.c	/^static SLVMB_ST slvmb=$/;"	v	file:
+slvmbreadohr_tbl	simmb.c	/^SLVMB_READ_OHR_ST slvmbreadohr_tbl[]=$/;"	v
+split	utils.c	/^int split(char *tk, const char *instr,char *split_str[])$/;"	f
+split_free	utils.c	/^void split_free(int spn, char *split_str[])$/;"	f
+status	shell.h	/^    unsigned int  status;$/;"	m	struct:__anon6
+t_version	shell.h	/^typedef struct t_version$/;"	s
+tag	simmb.h	/^	char *tag;$/;"	m	struct:__anon9
+timespecDiffms	utils.c	/^int64_t timespecDiffms(struct timeval *timeA_p, struct timeval *timeB_p)$/;"	f
+trim	properties.c	/^char *trim(char *daddy)$/;"	f
+usage	simmb.c	/^usage (FILE *fp, int n)$/;"	f	file:
+value	properties.h	/^    char *value;$/;"	m	struct:list
+value	shell.h	/^    SHELL_VAR_TYPE value;$/;"	m	struct:__anon6
+value	simmb.h	/^	char *value;$/;"	m	struct:__anon9
+valueToMB	utils.c	/^void valueToMB(uint16_t *tab_registers,int addrs, unsigned int valor, int bits )$/;"	f
+var	shell.h	/^    SHELL_VARS var[NUM_OF_SHELL_VARS];      \/**< Shell variables *\/$/;"	m	struct:__anon7
+version	shell.h	/^    SHELL_VERSION version;                  \/**< Version *\/$/;"	m	struct:__anon7
+writeAOHReg	simmb.c	/^int writeAOHReg(DATA_ST *d_st, uint8_t *mb_query)$/;"	f
+writeAOMHReg	simmb.c	/^int writeAOMHReg(DATA_ST *d_st, uint8_t *mb_query)$/;"	f
+writeDOCoil	simmb.c	/^int writeDOCoil(DATA_ST *d_st, uint8_t *mb_query)$/;"	f
