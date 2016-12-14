@@ -18,11 +18,11 @@ RTN_SIM sim(SIM_ARGS)
     int status, peso, desp, max, min;
     DATA_ST *d_st = (DATA_ST*) data;
     SIM_ST last_st = d_st->sim_status;
-    status = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(STATUS));
-    peso = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(PESO));
-    desp = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(DESP));
-    max = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(PESO_MAX));
-    min = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(INI_GRAF));
+    status = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(STATUS));
+    peso = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(PESO));
+    desp = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(DESP));
+    max = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(PESO_MAX));
+    min = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(INI_GRAF));
     switch(d_st->sim_status)
     {
         case SIM_ST_IDLE:
@@ -30,9 +30,9 @@ RTN_SIM sim(SIM_ARGS)
                 d_st->sim_status = SIM_ST_SEARCHING;
             break;
         case SIM_ST_SEARCHING:
-            valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(PESO, ++peso));
+            valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(PESO, ++peso));
             if(peso/d_st->sim_m_factor > d_st->sim_z_factor)
-                valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(DESP, peso/d_st->sim_m_factor));
+                valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(DESP, peso/d_st->sim_m_factor));
             if(status == 0)
                 d_st->sim_status = SIM_ST_IDLE;
             if(peso >= max)

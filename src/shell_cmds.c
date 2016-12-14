@@ -47,10 +47,10 @@ static RTN_CMD_PROC do_cmd_turn(SHELL *shell)
 
     if((strcmp("on",shell->argv[1]) == 0))
     {
-        valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(STATUS, 1));
+        valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(STATUS, 1));
         rtn = RTN_CMD_OK;
     }else if((strcmp("off",shell->argv[1]) == 0)) {
-        valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(STATUS, 0));
+        valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(STATUS, 0));
         rtn = RTN_CMD_OK;
     }
 
@@ -79,7 +79,7 @@ static RTN_CMD_PROC do_cmd_debug(SHELL *shell)
             rtn = RTN_CMD_OK;
             break;
         case 'm':
-            d_st->debug_modbus = on_off;
+            d_st->mb->debug = on_off;
             rtn = RTN_CMD_OK;
             break;
     }
@@ -114,19 +114,19 @@ static RTN_CMD_PROC do_cmd_print_mb(SHELL *shell)
     int value, addr;
     (*shell->printf)("Print MB values\n");
     addr = GET_MB_HR_ADDR(PESO);
-    value = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(STATUS));
+    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(STATUS));
     (*shell->printf)("[%04d] = %d\n", addr, value);
     addr = GET_MB_HR_ADDR(DESP);
-    value = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(DESP));
+    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(DESP));
     (*shell->printf)("[%04d] = %d\n", addr, value);
     addr = GET_MB_HR_ADDR(STATUS);
-    value = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(STATUS));
+    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(STATUS));
     (*shell->printf)("[%04d] = %d\n", addr, value);
     addr = GET_MB_HR_ADDR(PESO_MAX);
-    value = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(PESO_MAX));
+    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(PESO_MAX));
     (*shell->printf)("[%04d] = %d\n", addr, value);
     addr = GET_MB_HR_ADDR(INI_GRAF);
-    value = MBToValue(d_st->mb_mapping->tab_registers, GET_MB_HR(INI_GRAF));
+    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(INI_GRAF));
     (*shell->printf)("[%04d] = %d\n", addr, value);
     return RTN_CMD_OK;
 }
@@ -198,10 +198,10 @@ static RTN_CMD_PROC do_cmd_reset(SHELL *shell)
 {
     DATA_ST *d_st = (DATA_ST*) shell->data;
 
-    valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(PESO,   0));
-    valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(DESP,   0));
-    valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(NONE,   0));
-    valueToMB(d_st->mb_mapping->tab_registers, SET_MB_HR(STATUS, 0));
+    valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(PESO,   0));
+    valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(DESP,   0));
+    valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(NONE,   0));
+    valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(STATUS, 0));
     memset(shell->var, 0, sizeof(SHELL_VARS) * NUM_OF_SHELL_VARS);
     (*shell->printf)(CMD_OK_RESPONSE);
     return RTN_CMD_OK;

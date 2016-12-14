@@ -24,6 +24,7 @@ LDFLAGS  = -lpthread -lrt -lc -lm
 LDLIBS   = -L.
 
 SRC      = debug.c utils.c main.c func_mb.c shell.c shell_cmds.c sim.c
+SRC      += mb_func.c 
 
 OBJS     = $(SRC:.c=.o)
 DEPS     = $(OBJS:.o=.d) 
@@ -53,7 +54,7 @@ $(BUILD_NUMBER_FILE): $(SRC)
 # ---------------------------------------------------------------------------
 %.o: %.c
 	@printf "%-40s" "$<" 
-	@$(CC) $(CFLAGS) -o $@ -c $< >.log 2>&1 && echo "[OK]" || echo "[ERROR]"
+	@$(CC) $(CFLAGS) -o $@ -c $< >.log 2>&1 && echo "[OK]" || echo "[ERROR]" 
 	@cat .log && rm -rf .log
 
 # ---------------------------------------------------------------------------

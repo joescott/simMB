@@ -13,7 +13,7 @@ flags = [
   '-std=c99',
   '-xc',
   '-isystem/usr/include/',
-  '-i../libmodbu/src/',
+  '-i../libmodbus/src/',
   ]
 
 SOURCE_EXTENSIONS = [ '.c','.h' ]
