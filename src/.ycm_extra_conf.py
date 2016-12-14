@@ -14,6 +14,7 @@ flags = [
   '-xc',
   '-isystem/usr/include/',
   '-i../libmodbus/src/',
+  '-I../libmodbus/src/',
   ]
 
 SOURCE_EXTENSIONS = [ '.c','.h' ]

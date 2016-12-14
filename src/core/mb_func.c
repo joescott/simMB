@@ -12,7 +12,6 @@
 
 MB_DATA_ST *init_mb(MB_CONF_ST *mb_conf)
 {
-
     MB_DATA_ST  *mb_data = (MB_DATA_ST *)malloc(sizeof(MB_DATA_ST));
     mb_data->mb_query = (uint8_t*) malloc(MODBUS_RTU_MAX_ADU_LENGTH);
 
@@ -46,15 +45,42 @@ MB_DATA_ST *init_mb(MB_CONF_ST *mb_conf)
 void clean_mb(MB_DATA_ST *mb_data)
 {
   pthread_mutex_destroy(&mb_data->mutex);
-  if(mb_data->mb_query)	free(mb_data->mb_query);
-  if(mb_data->mb_mapping)  modbus_mapping_free(mb_data->mb_mapping);
-  if(mb_data->mb_conn) 	modbus_free(mb_data->mb_conn);
+  if(mb_data->mb_query)	    free(mb_data->mb_query);
+  if(mb_data->mb_mapping)   modbus_mapping_free(mb_data->mb_mapping);
+  if(mb_data->mb_conn) 	    modbus_free(mb_data->mb_conn);
+  free(mb_data);
 }
 
 int connect_mb(MB_DATA_ST *mb_data)
 {
     return modbus_connect(mb_data->mb_conn); 
 }
+
+int receive_mb(MB_DATA_ST *mb_data)
+{
+    return modbus_receive(mb_data->mb_conn, mb_data->mb_query);
+}
+
+int reply_mb(MB_DATA_ST *mb_data, int rc)
+{
+    if(rc > 0)
+        return modbus_reply(mb_data->mb_conn, mb_data->mb_query, rc,
+                mb_data->mb_mapping);
+    return rc;
+}
+
+void rtu_loop_sever_mb(MB_DATA_ST *mb_data)
+{
+    int rc;
+    while(1)
+    {
+        if((rc = receive_mb(mb_data)) == -1)
+            continue;
+        get_mbfunction(mb_data);
+        reply_mb(mb_data, rc);
+    }
+}
+
 
 /*
  * ModBUS processing 

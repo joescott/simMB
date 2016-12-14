@@ -21,7 +21,7 @@ MODBUS_LIB=  ../libmodbus/src/.libs/modbus.o
 MODBUS_LIB+= ../libmodbus/src/.libs/modbus-data.o
 MODBUS_LIB+= ../libmodbus/src/.libs/modbus-rtu.o
 MODBUS_LIB+= ../libmodbus/src/.libs/modbus-tcp.o
-MODBUS_INCLUDE = ../libmodbus/src
+MODBUS_INCLUDE = ../../libmodbus/src
 
 # Build number 
 BUILD_NUMBER_FILE = ../BUILD

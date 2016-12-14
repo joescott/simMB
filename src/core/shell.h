@@ -14,6 +14,7 @@
 #include "shell_conf.h"
 
 #include <stdint.h>
+#include <stdbool.h>
 
 /** 
  * Read line return codes
@@ -101,6 +102,7 @@ typedef struct {
 
     SHELL_VERSION version;                  /**< Version */
     void *data;                             /**< General data pointer */
+    bool debug;                             /**< Debug activation */
 } SHELL;
 
 /** 

@@ -12,8 +12,6 @@
 BIN_DEST  = $(BINDIR)/$(PROGNAME)
 
 BUILD_DATE=$$(date +'%Y%m%d')
-CFLAGS      +=-DBUILD_NUMBER=$(BUILD_NUMBER)
-CFLAGS      +=-DBUILD_DATE=$(BUILD_DATE)
 INCLUDE  = -I. -I$(MODBUS_INCLUDE)
 CFLAGS   = -MD -g -Wall -DNDEBUG -DTYPE_ADQ
 CFLAGS   += $(INCLUDE) 
@@ -23,41 +21,29 @@ ASFLAGS  = -MD
 LDFLAGS  = -lpthread -lrt -lc -lm 
 LDLIBS   = -L.
 
-SRC      = debug.c utils.c main.c func_mb.c shell.c shell_cmds.c sim.c
-SRC      += mb_func.c 
-
-OBJS     = $(SRC:.c=.o)
-DEPS     = $(OBJS:.o=.d) 
+SRC_CORE = core
+SRC_APP  = app
+OBJS_CORE:=$(patsubst %.c,%.o,$(wildcard $(SRC_CORE)/*.c))
+OBJS_APP:=$(patsubst %.c,%.o,$(wildcard $(SRC_APP)/*.c))
 
 .PHONY: all clean 
 
 all: $(BUILD_NUMBER_FILE) $(BIN_DEST)
 
-$(BIN_DEST): $(OBJS)
+$(BIN_DEST): $(SRC_CORE) $(SRC_APP)
+	@make -C core
+	@make -C app
 	@printf "%-40s" "Linking $(PROGNAME) - Version $(VERSION).$(BUILD_NUMBER)"
-	@$(CC) $(OBJS) $(MODBUS_LIB) $(LDLIBS) $(LDFLAGS) -o $@ >.log 2>&1 && echo "[OK]" || echo "[ERROR]"
+	@$(CC) $(OBJS_CORE) $(OBJS_APP) $(MODBUS_LIB) $(LDLIBS) $(LDFLAGS) -o $@ >.log 2>&1 && echo "[OK]" || echo "[ERROR]"
 	@cat .log && rm -rf .log
 
 clean:
-	@echo Cleaning $(PROGNAME) - Version $(VERSION).$(BUILD_NUMBER)
-	@rm -f $(DEPS)
-	@rm -f $(OBJS)
-	@rm -f $(BIN_DEST) $(TGT).map
+	@echo Cleaning Main $(PROGNAME) - Version $(VERSION).$(BUILD_NUMBER)
+	@make -C core clean
+	@make -C app clean
+	@rm -f $(BIN_DEST)
 
-$(BUILD_NUMBER_FILE): $(SRC)
+$(BUILD_NUMBER_FILE): $(SRC_CORE) $(SRC_APP)
 	@$(eval BUILD_NUMBER=$(shell echo $$(($(BUILD_NUMBER)+1))))
 	@echo BUILD_NUMBER=$(BUILD_NUMBER) > $(BUILD_NUMBER_FILE)
 	@echo Compiling $(PROGNAME) - Version $(VERSION).$(BUILD_NUMBER)
-
-# ---------------------------------------------------------------------------
-# Rules for code generation
-# ---------------------------------------------------------------------------
-%.o: %.c
-	@printf "%-40s" "$<" 
-	@$(CC) $(CFLAGS) -o $@ -c $< >.log 2>&1 && echo "[OK]" || echo "[ERROR]" 
-	@cat .log && rm -rf .log
-
-# ---------------------------------------------------------------------------
-# Compiler generated dependencies
-# ---------------------------------------------------------------------------
--include $(DEPS)

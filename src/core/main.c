@@ -40,10 +40,7 @@ static MB_CONF_ST mb_conf=
 static DATA_ST d_st=
 {
     .debug=false,
-
-    .sim_time = 100000,     /** msec */
-    .sim_m_factor = 100,    /** pendiente desplazamiento */
-    .sim_z_factor = 0,      /** inicio del desplazamiento */
+    .sim.loop_time = 100000, /** msec */
 };
 
 static pthread_t main_threads[2];
@@ -159,10 +156,7 @@ static void *main_cmd(void *data)
 static void *sim_mng(void *data)
 {
     int rtn;
-    DATA_ST *d_st = (DATA_ST*) data;
-    d_st->sim_status = SIM_ST_IDLE;
-    d_st->sim_cnt = 0;
-
+    init_sim(data);
     do
     {
         rtn = sim(data);
@@ -175,7 +169,6 @@ static void *sim_mng(void *data)
  */
 int main(int argc, char *argv[])
 {
-    int rc;
     char c;
 
     initSignals();
@@ -196,7 +189,7 @@ int main(int argc, char *argv[])
                 mb_conf.port_baud = atoi(optarg);
                 break;
             case 'l':     /* Loop */
-                d_st.sim_time = atoi(optarg);
+                d_st.sim.loop_time = atoi(optarg);
                 break;
             case 'd':     /* Debug */
                 d_st.debug = true;
@@ -209,28 +202,20 @@ int main(int argc, char *argv[])
         }
 
     /*
-     * Mandatory argument
+     * Checking mandatory arguments
      */
     if(strlen(mb_conf.port_tty) == 0)
             usage(stderr, 1);
 
     if((d_st.mb = init_mb(&mb_conf)) != NULL && !connect_mb(d_st.mb))
     {
-        init_var(d_st.mb);
-
+        pthread_create(&main_threads[0], NULL, &sim_mng,    (void *) &d_st);
         pthread_create(&main_threads[1], NULL, &main_cmd,   (void *) &d_st);
-        pthread_create(&main_threads[2], NULL, &sim_mng,    (void *) &d_st);
         pthread_detach(main_threads[0]);
+        pthread_detach(main_threads[1]);
 
-        while(1)
-        {
-            if((rc = modbus_receive(d_st.mb->mb_conn, d_st.mb->mb_query)) == -1)
-                continue;
-            get_mbfunction(d_st.mb);
+        rtu_loop_sever_mb(d_st.mb);
 
-            if(rc > 0)
-                modbus_reply(d_st.mb->mb_conn, d_st.mb->mb_query, rc, d_st.mb->mb_mapping);
-        }
         pthread_join(main_threads[1], NULL);
     }else
         main_error(EXIT_CODE, "ModBUS connection error: %s\n", modbus_strerror(errno));

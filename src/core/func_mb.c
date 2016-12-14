@@ -12,20 +12,6 @@
 #include "utils.h"
 
 /**
- * Init Output Holding Registers
- */
-MB_PROC_DEF(init_var)
-{
-    valueToMB(mb_data->mb_mapping->tab_registers, SET_MB_HR(PESO,     0));
-    valueToMB(mb_data->mb_mapping->tab_registers, SET_MB_HR(DESP,     0));
-    valueToMB(mb_data->mb_mapping->tab_registers, SET_MB_HR(NONE,     0));
-    valueToMB(mb_data->mb_mapping->tab_registers, SET_MB_HR(STATUS,   0));
-    valueToMB(mb_data->mb_mapping->tab_registers, SET_MB_HR(PESO_MAX, 7000));
-    valueToMB(mb_data->mb_mapping->tab_registers, SET_MB_HR(INI_GRAF, 200));
-    return 0;
-}
-
-/**
  * Read Output Holding Registers
  */
 MB_PROC_DEF(get_var)

@@ -30,6 +30,17 @@ typedef struct {
  */
 RTN_CMD_PROC do_shell_cmd(SHELL *shell);
 
+/** 
+ * OK generic response
+ */
+#define CMD_OK_RESPONSE     "OK\r\n"
+
+/** 
+ * Fail generic response
+ */
+#define CMD_FAIL_RESPONSE   "FAIL\r\n"
+
+extern const SHELL_CMD shell_cmd_app_tbl[];
 
 #endif
 

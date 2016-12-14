@@ -78,6 +78,21 @@ void clean_mb(MB_DATA_ST *mb_data);
 int connect_mb(MB_DATA_ST *mb_data);
 
 /**
+ * modBUS receive
+ */
+int receive_mb(MB_DATA_ST *mb_data);
+
+/**
+ * modBUS reply
+ */
+int reply_mb(MB_DATA_ST *mb_datai, int rc);
+
+/**
+ * modBUS RTU mode loop
+ */
+void rtu_loop_sever_mb(MB_DATA_ST *mb_data);
+
+/**
  * get_mbfunction
  * Look up table search routine for modBUS function processing
  */

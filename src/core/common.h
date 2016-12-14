@@ -7,7 +7,7 @@
 
 #include "mb_def.h"
 #include "mb_func.h"
-
+#include "sim.h"
 
 /**
  * Transactional data 
@@ -18,24 +18,15 @@ typedef struct{
      */
     MB_DATA_ST *mb;
 
-    /**
-     * Thread Safe
-     */
-
     /** 
-     * Debug
+     * Global Debug
      */
     bool debug;
-    bool debug_modbus;
 
     /**
      * Simulation
      */
-    int  sim_status;
-    int  sim_cnt;
-    int  sim_time;
-    int  sim_m_factor;
-    int  sim_z_factor;
+    SIM_CORE_ST sim;
 }DATA_ST;
 
 
