@@ -29,7 +29,10 @@ BUILD_NUMBER_FILE = ../BUILD
 export 
 
 all:
-	@make -s -C $(SRCDIR) 
+	make -s -C $(SRCDIR) 
 
 clean:
 	@make -s -C $(SRCDIR) clean
+
+test:
+	@make -s -C $(SRCDIR) test

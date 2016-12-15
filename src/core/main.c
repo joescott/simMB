@@ -202,7 +202,7 @@ int main(int argc, char *argv[])
         }
 
     /*
-     * Checking mandatory arguments
+     * Checking for mandatory arguments
      */
     if(strlen(mb_conf.port_tty) == 0)
             usage(stderr, 1);
@@ -211,8 +211,6 @@ int main(int argc, char *argv[])
     {
         pthread_create(&main_threads[0], NULL, &sim_mng,    (void *) &d_st);
         pthread_create(&main_threads[1], NULL, &main_cmd,   (void *) &d_st);
-        pthread_detach(main_threads[0]);
-        pthread_detach(main_threads[1]);
 
         rtu_loop_sever_mb(d_st.mb);
 
