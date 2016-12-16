@@ -127,6 +127,18 @@ static RTN_CMD_PROC do_cmd_reset(SHELL *shell)
 }
 
 /** 
+ * Command quit.
+ *  It quit from cmd shell and exit.
+ */
+static RTN_CMD_PROC do_cmd_quit(SHELL *shell)
+{
+    DATA_ST *d_st = (DATA_ST*) shell->data;
+    d_st->quit = true;
+    (*shell->printf)("Bye\n");
+    return RTN_CMD_OK;
+}
+
+/** 
  * Help command function definition.
  */
 static RTN_CMD_PROC do_cmd_help(SHELL *shell);
@@ -141,7 +153,8 @@ const SHELL_CMD shell_cmd_tbl[]={
     {"get",     1, "Gets the value of the specified variable.", do_cmd_get },
     {"reset",   0, "Resets ALL variable values to zero.", do_cmd_reset },
     {"debug",   2, "Set debug modes.", do_cmd_debug },
-    {"help",    0, "Prinf help message", do_cmd_help },
+    {"help",    0, "Print help message", do_cmd_help },
+    {"quit",    0, "Quit", do_cmd_quit },
     {NULL,0,NULL,NULL}
 };
 #define NUM_SHELL_CMDS (sizeof(shell_cmd_tbl)/sizeof(SHELL_CMD))

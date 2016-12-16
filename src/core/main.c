@@ -43,7 +43,7 @@ static DATA_ST d_st=
     .sim.loop_time = 100000, /** msec */
 };
 
-static pthread_t main_threads[2];
+static pthread_t main_threads[3];
 
 /**
  * Program Options
@@ -141,12 +141,15 @@ static void initSignals()
  */
 static void *main_cmd(void *data)
 {
+    RTN_CMD_PROC cmd;
+    DATA_ST *d_st = (DATA_ST*) data;
     SHELL *shell = init_shell(&getchar, &putchar, (void *) data); 
-    while(1)
+    while(d_st->quit == false)
     {
         if(read_line(shell) == RTN_SLINE_READ_OK)
-            proc_line(shell);
+            cmd = proc_line(shell);
     }
+    close_shell(shell);
 	pthread_exit(NULL);
 }
 
@@ -156,13 +159,24 @@ static void *main_cmd(void *data)
 static void *sim_mng(void *data)
 {
     int rtn;
+    DATA_ST *d_st = (DATA_ST*) data;
     init_sim(data);
     do
     {
         rtn = sim(data);
-    }while(rtn == RTN_SIM_LOOP);
+    }while(rtn == RTN_SIM_LOOP && d_st->quit == false);
 	pthread_exit(NULL);
 }
+
+/**
+ */
+static void *mb_mng(void *data)
+{
+    DATA_ST *d_st = (DATA_ST*) data;
+    rtu_loop_sever_mb(d_st->mb);
+	pthread_exit(NULL);
+}
+
 
 /**
  *  Main routine
@@ -207,14 +221,23 @@ int main(int argc, char *argv[])
     if(strlen(mb_conf.port_tty) == 0)
             usage(stderr, 1);
 
+    if(!strcmp(mb_conf.port_tty ,"NULL"))
+    {
+        pthread_create(&main_threads[1], NULL, &main_cmd,   (void *) &d_st);
+        while(d_st.quit == false);
+    }else
+
     if((d_st.mb = init_mb(&mb_conf)) != NULL && !connect_mb(d_st.mb))
     {
-        pthread_create(&main_threads[0], NULL, &sim_mng,    (void *) &d_st);
-        pthread_create(&main_threads[1], NULL, &main_cmd,   (void *) &d_st);
+        pthread_create(&main_threads[0], NULL, &main_cmd,   (void *) &d_st);
+        pthread_create(&main_threads[1], NULL, &sim_mng,    (void *) &d_st);
+        pthread_create(&main_threads[2], NULL, &mb_mng,     (void *) &d_st);
 
-        rtu_loop_sever_mb(d_st.mb);
+        pthread_detach(main_threads[1]);
+        pthread_detach(main_threads[2]);
 
-        pthread_join(main_threads[1], NULL);
+        pthread_join(main_threads[0], NULL);
+        pthread_kill(main_threads[2], SIGHUP);
     }else
         main_error(EXIT_CODE, "ModBUS connection error: %s\n", modbus_strerror(errno));
 

@@ -13,6 +13,8 @@
  * Transactional data 
  */
 typedef struct{
+    bool quit;
+
     /**
      * ModBUS
      */

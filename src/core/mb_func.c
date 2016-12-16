@@ -44,11 +44,13 @@ MB_DATA_ST *init_mb(MB_CONF_ST *mb_conf)
 
 void clean_mb(MB_DATA_ST *mb_data)
 {
-  pthread_mutex_destroy(&mb_data->mutex);
-  if(mb_data->mb_query)	    free(mb_data->mb_query);
-  if(mb_data->mb_mapping)   modbus_mapping_free(mb_data->mb_mapping);
-  if(mb_data->mb_conn) 	    modbus_free(mb_data->mb_conn);
-  free(mb_data);
+    if(mb_data == NULL)
+        return;
+    pthread_mutex_destroy(&mb_data->mutex);
+    if(mb_data->mb_query)	    free(mb_data->mb_query);
+    if(mb_data->mb_mapping)   modbus_mapping_free(mb_data->mb_mapping);
+    if(mb_data->mb_conn) 	    modbus_free(mb_data->mb_conn);
+    free(mb_data);
 }
 
 int connect_mb(MB_DATA_ST *mb_data)

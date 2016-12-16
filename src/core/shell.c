@@ -14,12 +14,27 @@
 #include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
+#include <unistd.h>
+#include <termios.h>
 
+#define  SHELL_DEBUG
 #ifdef SHELL_DEBUG
     #define SHELL_DEBUG_PRINT(fmt, ...) printf(fmt,__VA_ARGS__)
+
+    static void shell_debug_print_buffer(SHELL *shell)
+    {
+        char *p;
+        printf("BUFFER[%d]", shell->pwrite - shell->in_buffer);
+        for(p=shell->in_buffer; p - shell->in_buffer <  MAX_BUFFER_SHELL_SIZE; p++)
+            printf("%02X", *p);
+        printf("\n");
+    }
 #else
     #define SHELL_DEBUG_PRINT(fmt, ...)
+    #define shell_debug_print_buffer(x)
 #endif
+
+static struct termios old_tio, new_tio;
 
 /** 
  * @brief Static data structure
@@ -78,7 +93,27 @@ SHELL *init_shell(GET_CHAR_SHELL_FUNC get_char_func,
     shell.printf = default_shell_printf;
 	shell.data = data;
     memset(shell.var, 0, sizeof(SHELL_VARS) * NUM_OF_SHELL_VARS);
+
+	/* get the terminal settings for stdin */
+	tcgetattr(STDIN_FILENO,&old_tio);
+	/* we want to keep the old setting to restore them a the end */
+	new_tio=old_tio;
+	/* disable canonical mode (buffered i/o) and local echo */
+	new_tio.c_lflag &=(~ICANON & ~ECHO);
+
+	/* set the new settings immediately */
+	tcsetattr(STDIN_FILENO,TCSANOW,&new_tio);
+
     return &shell;
+}
+
+/**
+ * Shell close routine
+ */
+void close_shell(SHELL *shell)
+{
+	/* restore the former settings */
+	tcsetattr(STDIN_FILENO,TCSANOW,&old_tio);
 }
 
 /**
@@ -91,9 +126,19 @@ RTN_SLINE_READ read_line(SHELL *shell)
     RTN_SLINE_READ rtn = RTN_SLINE_READ_FAIL;
     while((c = (*shell->get_char_func)()) != 0)
     {
-        SHELL_DEBUG_PRINT("Input: |%c|%02X|\n",(char)c, c);
+        SHELL_DEBUG_PRINT("Input: |%c|%02X| ",(char)c, c);
+
         if(c == EOF)
             continue;
+        
+        if(c == 0x08) /**< Backspace */
+        {
+            if(shell->pwrite > shell->in_buffer)
+                *shell->pwrite-- = '\0';
+
+            shell_debug_print_buffer(shell);
+            continue;
+        }
 
         if(shell->pwrite - shell->in_buffer >= MAX_BUFFER_SHELL_SIZE)
         {
@@ -104,6 +149,11 @@ RTN_SLINE_READ read_line(SHELL *shell)
 
         *shell->pwrite++ = c;
         *shell->pwrite = '\0';
+
+        shell_debug_print_buffer(shell);
+
+        (*shell->put_char_func)((int)c);
+
         if(shell->pwrite - shell->in_buffer > SHELL_LINE_TERMINATOR_LEN && 
                 is_terminator_found(shell))
         {

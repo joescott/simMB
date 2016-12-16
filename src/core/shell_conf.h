@@ -23,7 +23,7 @@
  * Max buffer size
  * Its used for input and output buffers
  */
-#define MAX_BUFFER_SHELL_SIZE       1024 
+#define MAX_BUFFER_SHELL_SIZE       10 
 
 /**
  * Max lenght of each argument. 

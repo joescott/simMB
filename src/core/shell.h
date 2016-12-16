@@ -114,6 +114,11 @@ typedef struct {
  */
 SHELL *init_shell(GET_CHAR_SHELL_FUNC get_char_func, PUT_CHAR_SHELL_FUNC put_char_funci, void *data);
 
+/**
+ * @brief Close Shell 
+ * @param shell It's Shell data structure
+ */
+void close_shell(SHELL *shell);
 /** 
  * @brief Read line rutine
  * @param shell It's Shell data structure
