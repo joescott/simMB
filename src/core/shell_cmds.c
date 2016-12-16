@@ -63,7 +63,8 @@ static RTN_CMD_PROC do_cmd_debug(SHELL *shell)
 static RTN_CMD_PROC do_cmd_version(SHELL *shell)
 {
     (*shell->printf)("%0.2d.%0.2d.%0.2d\r\n", 
-            shell->version.major, shell->version.minor, shell->version.build);
+            shell->version.major, shell->version.minor, 
+            shell->version.build);
     return RTN_CMD_OK;
 }
 

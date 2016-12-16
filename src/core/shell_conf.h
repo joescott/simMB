@@ -16,14 +16,15 @@
  * Version definition
  */
 #define V_MAJOR                 0       /*< Major version [0..99] */
-#define V_MINOR                 0       /*< minor version [0..99] */
+#define V_MINOR                 1       /*< minor version [0..99] */
 #define V_BUILD                 1       /*< build version [0..99] */
 
 /**
  * Max buffer size
  * Its used for input and output buffers
  */
-#define MAX_BUFFER_SHELL_SIZE       10 
+#define MAX_IN_BUFFER_SHELL_SIZE       10 
+#define MAX_OUT_BUFFER_SHELL_SIZE      512 
 
 /**
  * Max lenght of each argument. 

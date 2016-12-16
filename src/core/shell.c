@@ -10,24 +10,30 @@
 
 #include "shell.h"
 #include "shell_cmds.h"
+#include "shell_buffer_opt.h"
 
 #include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <unistd.h>
 #include <termios.h>
+#include <ctype.h>
 
 #define  SHELL_DEBUG
 #ifdef SHELL_DEBUG
     #define SHELL_DEBUG_PRINT(fmt, ...) printf(fmt,__VA_ARGS__)
 
-    static void shell_debug_print_buffer(SHELL *shell)
+    static inline void shell_debug_print_buffer(SHELL *shell)
     {
         char *p;
-        printf("BUFFER[%d]", shell->pwrite - shell->in_buffer);
-        for(p=shell->in_buffer; p - shell->in_buffer <  MAX_BUFFER_SHELL_SIZE; p++)
-            printf("%02X", *p);
-        printf("\n");
+        if(shell->debug)
+        {
+            printf("BUFFER[%d]", shell->pwrite - shell->in_buffer);
+            for(p=shell->in_buffer; 
+                    p - shell->in_buffer <  MAX_IN_BUFFER_SHELL_SIZE; p++)
+                printf("%02X", *p);
+            printf("\n");
+        }
     }
 #else
     #define SHELL_DEBUG_PRINT(fmt, ...)
@@ -56,7 +62,7 @@ static void default_shell_printf(const char *fmt, ...)
     char *pc;
     va_list ap;
     va_start(ap, fmt);
-    vsprintf(shell.out_buffer, fmt, ap);
+    vsnprintf(shell.out_buffer,MAX_OUT_BUFFER_SHELL_SIZE, fmt, ap);
     va_end(ap);
 
     for(pc=shell.out_buffer; *pc != '\0'; pc++)
@@ -123,24 +129,22 @@ void close_shell(SHELL *shell)
 RTN_SLINE_READ read_line(SHELL *shell)
 {
     int c;
+    RTN_SEQ rseq;
     RTN_SLINE_READ rtn = RTN_SLINE_READ_FAIL;
     while((c = (*shell->get_char_func)()) != 0)
     {
-        SHELL_DEBUG_PRINT("Input: |%c|%02X| ",(char)c, c);
+        if(shell->debug)
+            SHELL_DEBUG_PRINT("Input: |%c|%02X| ",isprint(c)?(char)c:'-', c);
 
         if(c == EOF)
             continue;
-        
-        if(c == 0x08) /**< Backspace */
-        {
-            if(shell->pwrite > shell->in_buffer)
-                *shell->pwrite-- = '\0';
 
-            shell_debug_print_buffer(shell);
+        if((rseq = shell_special_seq(shell, c)) == RTN_SEQ_CONTINUE)
             continue;
-        }
+        else if(rseq == RTN_SEQ_BREAK)
+            break;
 
-        if(shell->pwrite - shell->in_buffer >= MAX_BUFFER_SHELL_SIZE)
+        if(shell->pwrite - shell->in_buffer >= MAX_IN_BUFFER_SHELL_SIZE)
         {
             shell->pwrite = shell->in_buffer;
             rtn = RTN_SLINE_READ_EXCEEDED;

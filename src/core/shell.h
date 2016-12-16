@@ -87,8 +87,8 @@ typedef struct t_version
  * @brief Shell model
  */
 typedef struct {
-    char in_buffer[MAX_BUFFER_SHELL_SIZE];  /**< Input command Line buffer. */
-    char out_buffer[MAX_BUFFER_SHELL_SIZE]; /**< Input command Line buffer. */
+    char in_buffer[MAX_IN_BUFFER_SHELL_SIZE];  /**< Input command Line buffer. */
+    char out_buffer[MAX_OUT_BUFFER_SHELL_SIZE]; /**< Input command Line buffer. */
     char *pwrite;                           /**< Write pointer. */
 
     char argv[MAX_ARGS_CNT][MAX_ARGS_LEN];  /**< Command arguments. */
