@@ -1,3 +1,6 @@
 [submodule "libmodbus"]
 	path = libmodbus
 	url = https://github.com/stephane/libmodbus
+[submodule "libstm"]
+	path = libstm
+	url = https://github.com/joescott/libstm.git
