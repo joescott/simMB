@@ -71,7 +71,7 @@ static struct option longopts[] =
     { NULL,           0, 0,    0  }
 };
 
-static const char * _opts = "hs:p:b:l:v";
+static const char * _opts = "hs:p:b:l:vd";
 
 /**
  * Print help usage
@@ -144,6 +144,7 @@ static void *main_cmd(void *data)
     RTN_CMD_PROC cmd;
     DATA_ST *d_st = (DATA_ST*) data;
     SHELL *shell = init_shell(&getchar, &putchar, (void *) data); 
+    shell->debug = d_st->debug;
     while(d_st->quit == false)
     {
         if(read_line(shell) == RTN_SLINE_READ_OK)

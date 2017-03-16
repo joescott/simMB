@@ -5,7 +5,7 @@
  * ModBus Variables
  */
 
-#define  VAR_REGNUM                   10 
+#define  VAR_REGNUM                   10000 
 
 #define  TOTAL_REGNUM                 VAR_REGNUM 
 

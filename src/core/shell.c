@@ -11,6 +11,7 @@
 #include "shell.h"
 #include "shell_cmds.h"
 #include "shell_buffer_opt.h"
+#include "hist.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -110,6 +111,8 @@ SHELL *init_shell(GET_CHAR_SHELL_FUNC get_char_func,
 	/* set the new settings immediately */
 	tcsetattr(STDIN_FILENO,TCSANOW,&new_tio);
 
+    inithist();
+
     return &shell;
 }
 
@@ -186,6 +189,7 @@ RTN_CMD_PROC proc_line(SHELL *shell)
     char *pc;
     char *pr;
     int lidx, start, sep, group;
+    addtohist(shell->in_buffer);
     for(shell->argc = lidx = 0, start=0, sep = 0, group = 0, 
             pr = pc = shell->in_buffer; *pc != '\0';pc++)
     {
@@ -256,7 +260,6 @@ int get_shell_var(SHELL *shell, int id, SHELL_VAR_TYPE *value)
  */
 int reset_shell_var(SHELL *shell, int id)
 {
-
     if(id < 0 || id > NUM_OF_SHELL_VARS)
         return SV_ERR_CODE_WRONG_ID;
 

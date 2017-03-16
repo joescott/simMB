@@ -19,7 +19,7 @@ MB_PROC_DEF(get_var)
     int addr, rnum;
     addr = MODBUS_GET_INT16_FROM_INT8(mb_data->mb_query, MB_DATA_ADDR);
     rnum = MODBUS_GET_INT16_FROM_INT8(mb_data->mb_query, MB_DATA_RNUM);
-    debug_printf(mb_data->debug,"GET_VAR: Addr[%d] Nreg:[%d]\n",addr, rnum);
+    debug_printf(mb_data->debug,"GET_VAR: Addr[%4d] Nreg:[%5d]\n",addr, rnum);
     return 0;
 }
 
@@ -31,7 +31,7 @@ MB_PROC_DEF(set_var)
     int addr, value;
     addr = MODBUS_GET_INT16_FROM_INT8(mb_data->mb_query, MB_DATA_ADDR);
     value= MODBUS_GET_INT16_FROM_INT8(mb_data->mb_query, MB_DATA_SINGLE_VALUE);
-    debug_printf(mb_data->debug, "SET_VAR: Addr[%d] Value:[%d]\n",addr, value);
+    debug_printf(mb_data->debug, "SET_VAR: Addr[%4d] Value:[%5d]\n",addr, value);
     valueToMB(mb_data->mb_mapping->tab_registers, addr, value, 16);
     return 0;
 }

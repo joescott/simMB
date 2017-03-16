@@ -160,10 +160,13 @@ static int writeAOHReg(MB_DATA_ST *mb_data)
  */
 static int writeAOMHReg(MB_DATA_ST *mb_data)
 {
-  uint16_t addr = MODBUS_GET_INT16_FROM_INT8(mb_data->mb_query, MB_DATA_ADDR);
-  uint16_t value = MODBUS_GET_INT16_FROM_INT8(mb_data->mb_query, MB_DATA_SINGLE_VALUE);
-  debug_printf(mb_data->debug, "NOT IMPLEMENTED %s [%d = %d]\n",__FUNCTION__, addr, value);
-  return 0;
+    uint16_t addr = MODBUS_GET_INT16_FROM_INT8(mb_data->mb_query, MB_DATA_ADDR);
+    uint16_t value = MODBUS_GET_INT16_FROM_INT8(mb_data->mb_query, MB_DATA_SINGLE_VALUE);
+    debug_printf(mb_data->debug, ">%s[%d = %d]\n",__FUNCTION__, addr, value);
+    pthread_mutex_lock(&(mb_data->mutex));
+    set_var(mb_data);
+    pthread_mutex_unlock(&(mb_data->mutex));
+    return 0;
 }
 
 /**

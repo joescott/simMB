@@ -70,33 +70,6 @@ static RTN_CMD_PROC do_cmd_set_sim(SHELL *shell)
     return RTN_CMD_OK;
 }
 
-static RTN_CMD_PROC do_cmd_print_mb(SHELL *shell)
-{
-
-    DATA_ST *d_st = (DATA_ST*) shell->data;
-    SIM_CORE_ST *sim = &d_st->sim;
-    SIM_DATA_ST *app = (SIM_DATA_ST*) sim->app;
-
-    int value, addr;
-    (*shell->printf)("Print MB values\n");
-    addr = GET_MB_HR_ADDR(PESO);
-    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(STATUS));
-    (*shell->printf)("[%04d] = %d\n", addr, value);
-    addr = GET_MB_HR_ADDR(DESP);
-    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(DESP));
-    (*shell->printf)("[%04d] = %d\n", addr, value);
-    addr = GET_MB_HR_ADDR(STATUS);
-    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(STATUS));
-    (*shell->printf)("[%04d] = %d\n", addr, value);
-    addr = GET_MB_HR_ADDR(PESO_MAX);
-    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(PESO_MAX));
-    (*shell->printf)("[%04d] = %d\n", addr, value);
-    addr = GET_MB_HR_ADDR(INI_GRAF);
-    value = MBToValue(d_st->mb->mb_mapping->tab_registers, GET_MB_HR(INI_GRAF));
-    (*shell->printf)("[%04d] = %d\n", addr, value);
-    return RTN_CMD_OK;
-}
-
 /** 
  * Reset command. 
  *  It resets all variables.
@@ -115,11 +88,69 @@ static RTN_CMD_PROC do_cmd_reset_sim(SHELL *shell)
     return RTN_CMD_OK;
 }
 
+/**
+ * Get MB 
+ */
+static RTN_CMD_PROC do_cmd_get_mb(SHELL *shell)
+{
+    int addr,num,value,cnt;
+    DATA_ST *d_st = (DATA_ST*) shell->data;
+    SIM_CORE_ST *sim = &d_st->sim;
+    SIM_DATA_ST *app = (SIM_DATA_ST*) sim->app;
+
+    if(sscanf(shell->argv[1],"%d", &addr) != 1)
+        return RTN_CMD_FAIL;
+    if(sscanf(shell->argv[2],"%d", &num) != 1)
+        return RTN_CMD_FAIL;
+
+    cnt = 1;
+    if(sscanf(shell->argv[3],"%d", &cnt) != 1)
+            return RTN_CMD_FAIL;
+
+    for(;cnt--;)
+    {
+        (*shell->printf)("Get ");
+        value = MBToValue(d_st->mb->mb_mapping->tab_registers, addr, num);
+        (*shell->printf)("[%04d] = %d\n", addr, value);
+        addr += (num==16)?1:2;
+    }
+    return RTN_CMD_OK;
+}
+
+/**
+ * Set MB 
+ */
+static RTN_CMD_PROC do_cmd_set_mb(SHELL *shell)
+{
+    int addr,num,value;
+    DATA_ST *d_st = (DATA_ST*) shell->data;
+    SIM_CORE_ST *sim = &d_st->sim;
+    SIM_DATA_ST *app = (SIM_DATA_ST*) sim->app;
+
+    if(sscanf(shell->argv[1],"%d", &addr) != 1)
+        return RTN_CMD_FAIL;
+    if(sscanf(shell->argv[2],"%d", &num) != 1)
+        return RTN_CMD_FAIL;
+    if(sscanf(shell->argv[3],"%d", &value) != 1)
+        return RTN_CMD_FAIL;
+
+    valueToMB(d_st->mb->mb_mapping->tab_registers, addr, value, num);
+    (*shell->printf)("Set ");
+    value = MBToValue(d_st->mb->mb_mapping->tab_registers, addr, num);
+    (*shell->printf)("[%04d] = %d\n", addr, value);
+    return RTN_CMD_OK;
+}
+
+
+
+
 const SHELL_CMD shell_cmd_app_tbl[]={
     {"resetsim",0, "Resets ALL variable values to zero.", do_cmd_reset_sim },
-    {"turn",    1, "Turn on/off: turn [on|off]", do_cmd_turn },
-    {"setsim",  2, "Set sim parameters.", do_cmd_set_sim },
-    {"print",   0, "Print Variables.", do_cmd_print_mb },
+    {"turn",    1, "Turn on/off: turn [on|off]",          do_cmd_turn      },
+    {"setsim",  2, "Set sim parameters.",                 do_cmd_set_sim   },
+
+    {"get_mb",  3, "Get MB: get_mb <addr> 16|32 cnt",     do_cmd_get_mb    },
+    {"set_mb",  3, "Set MB: set_mb <addr> 16|32 <value>", do_cmd_set_mb    },
     {NULL,0,NULL,NULL}
 };
 
