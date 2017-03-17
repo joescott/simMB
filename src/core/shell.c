@@ -29,10 +29,19 @@
         char *p;
         if(shell->debug)
         {
-            printf("BUFFER[%d]", shell->pwrite - shell->in_buffer);
+            printf("\nBUFFER[%d]\n", shell->pwrite - shell->in_buffer);
             for(p=shell->in_buffer; 
                     p - shell->in_buffer <  MAX_IN_BUFFER_SHELL_SIZE; p++)
-                printf("%02X", *p);
+                printf("|%02X", *p);
+            printf("\n");
+            for(p=shell->in_buffer; 
+                    p - shell->in_buffer <  MAX_IN_BUFFER_SHELL_SIZE; p++)
+            {
+                if(*p)
+                    printf("|%2c", *p);
+                else
+                    printf("|--");
+            }
             printf("\n");
         }
     }
@@ -137,7 +146,7 @@ RTN_SLINE_READ read_line(SHELL *shell)
     while((c = (*shell->get_char_func)()) != 0)
     {
         if(shell->debug)
-            SHELL_DEBUG_PRINT("Input: |%c|%02X| ",isprint(c)?(char)c:'-', c);
+            SHELL_DEBUG_PRINT("\nInput: |%c|%02X| ",isprint(c)?(char)c:'-', c);
 
         if(c == EOF)
             continue;

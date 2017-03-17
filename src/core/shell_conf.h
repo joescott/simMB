@@ -23,7 +23,7 @@
  * Max buffer size
  * Its used for input and output buffers
  */
-#define MAX_IN_BUFFER_SHELL_SIZE       64 
+#define MAX_IN_BUFFER_SHELL_SIZE       24 
 #define MAX_OUT_BUFFER_SHELL_SIZE      512 
 
 /**

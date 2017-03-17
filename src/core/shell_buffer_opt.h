@@ -22,6 +22,7 @@ typedef enum {
 typedef RTN_SEQ_ACT (*SEQ_ACT)(SHELL *, int);
 typedef struct {
     const char sc;
+    const char esc;
     RTN_SEQ output;
     SEQ_ACT action;
 }SHELL_SEQ_IT;
