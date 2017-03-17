@@ -60,6 +60,12 @@
  */
 #define NUM_OF_SHELL_VARS           64 
 
+/**
+ * Prompt 
+ */
+
+#define PROMPT "> "
+
 
 
 #endif

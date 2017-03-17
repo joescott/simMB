@@ -147,6 +147,7 @@ static void *main_cmd(void *data)
     shell->debug = d_st->debug;
     while(d_st->quit == false)
     {
+        print_shell_prompt(shell);
         if(read_line(shell) == RTN_SLINE_READ_OK)
             cmd = proc_line(shell);
     }

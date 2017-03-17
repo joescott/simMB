@@ -90,7 +90,8 @@ static RTN_CMD_PROC do_cmd_set(SHELL *shell)
         return RTN_CMD_FAIL;
 
     if(set_shell_var(shell, var_id, 
-                    atoi(shell->argv[2])) != var_id)
+                    shell->argv[2]) != var_id)
+                    //atoi(shell->argv[2])) != var_id)
         return RTN_CMD_FAIL;
 
     (*shell->printf)("%s\r\n", shell->argv[2]);
@@ -112,7 +113,7 @@ static RTN_CMD_PROC do_cmd_get(SHELL *shell)
     if(get_shell_var(shell, var_id, &value) != var_id)
         return RTN_CMD_FAIL;
 
-    (*shell->printf)("%d\r\n",(int) value);
+    (*shell->printf)("%s\r\n",(char *) value);
     return RTN_CMD_OK;
 }
 

@@ -62,7 +62,8 @@ typedef void (*PRINTF_SHELL_FUNC)(const char *,...);
 /**
  * Shell Variable type 
  */
-typedef int16_t SHELL_VAR_TYPE;
+//typedef int16_t SHELL_VAR_TYPE;
+typedef char * SHELL_VAR_TYPE;
 
 /**
  * Shell Variables model
@@ -159,4 +160,6 @@ int get_shell_var(SHELL *shell ,int id, SHELL_VAR_TYPE *value);
  */
 int reset_shell_var(SHELL *shell, int id);
 
+
+void print_shell_prompt(SHELL *shell);
 #endif

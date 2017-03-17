@@ -19,6 +19,8 @@
 #include <unistd.h>
 #include <termios.h>
 #include <ctype.h>
+#include <stdlib.h>
+
 
 #define  SHELL_DEBUG
 #ifdef SHELL_DEBUG
@@ -29,7 +31,7 @@
         char *p;
         if(shell->debug)
         {
-            printf("\nBUFFER[%d]\n", shell->pwrite - shell->in_buffer);
+            printf("\nBUFFER[%ld]\n", shell->pwrite - shell->in_buffer);
             for(p=shell->in_buffer; 
                     p - shell->in_buffer <  MAX_IN_BUFFER_SHELL_SIZE; p++)
                 printf("|%02X", *p);
@@ -108,7 +110,6 @@ SHELL *init_shell(GET_CHAR_SHELL_FUNC get_char_func,
     shell.pwrite = shell.in_buffer;
     shell.printf = default_shell_printf;
 	shell.data = data;
-    memset(shell.var, 0, sizeof(SHELL_VARS) * NUM_OF_SHELL_VARS);
 
 	/* get the terminal settings for stdin */
 	tcgetattr(STDIN_FILENO,&old_tio);
@@ -120,7 +121,11 @@ SHELL *init_shell(GET_CHAR_SHELL_FUNC get_char_func,
 	/* set the new settings immediately */
 	tcsetattr(STDIN_FILENO,TCSANOW,&new_tio);
 
+    /* init history module */
     inithist();
+
+    /* Set prompt */
+    set_shell_var(&shell, 1, PROMPT); 
 
     return &shell;
 }
@@ -242,7 +247,8 @@ int set_shell_var(SHELL *shell, int id, SHELL_VAR_TYPE value)
     if(id <= 0 || id > NUM_OF_SHELL_VARS)
         return SV_ERR_CODE_WRONG_ID;
 
-    shell->var[id].value = value;
+    //shell->var[id].value = value;
+    shell->var[id].value = strdup(value);
     shell->var[id].status = 1;
 
     return id;
@@ -272,10 +278,21 @@ int reset_shell_var(SHELL *shell, int id)
     if(id < 0 || id > NUM_OF_SHELL_VARS)
         return SV_ERR_CODE_WRONG_ID;
 
+    free(&shell->var[id]);
+    /*
     if(id == 0)
         memset(shell->var, 0, sizeof(SHELL_VARS) * NUM_OF_SHELL_VARS);
     else
         memset(&shell->var[id], 0, sizeof(SHELL_VARS));
+    */
 
     return id;
+}
+
+
+void print_shell_prompt(SHELL *shell)
+{
+    char *value;
+    get_shell_var(shell,1,&value);
+    shell->printf("%s",value);
 }
