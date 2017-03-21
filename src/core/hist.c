@@ -33,7 +33,8 @@ addtohist(char *buff)
 char * 
 upfromhist(void)
 {
-    return (phist_write-phist_read-1 > 0)?
+    printf("%p %p %s\n", phist_write, phist_read, *phist_read);
+    return (phist_write-phist_read-1 >= 0)?
         *++phist_read:*phist_read;
 }
 
@@ -41,6 +42,6 @@ char *
 downfromhist(void)
 {
     return (phist_read - hist > 0)?
-        *--phist_read:*phist_read;
+        *++phist_read:*phist_read;
 }
 

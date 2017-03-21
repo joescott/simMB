@@ -247,7 +247,6 @@ int set_shell_var(SHELL *shell, int id, SHELL_VAR_TYPE value)
     if(id <= 0 || id > NUM_OF_SHELL_VARS)
         return SV_ERR_CODE_WRONG_ID;
 
-    //shell->var[id].value = value;
     shell->var[id].value = strdup(value);
     shell->var[id].status = 1;
 
@@ -277,15 +276,7 @@ int reset_shell_var(SHELL *shell, int id)
 {
     if(id < 0 || id > NUM_OF_SHELL_VARS)
         return SV_ERR_CODE_WRONG_ID;
-
     free(&shell->var[id]);
-    /*
-    if(id == 0)
-        memset(shell->var, 0, sizeof(SHELL_VARS) * NUM_OF_SHELL_VARS);
-    else
-        memset(&shell->var[id], 0, sizeof(SHELL_VARS));
-    */
-
     return id;
 }
 

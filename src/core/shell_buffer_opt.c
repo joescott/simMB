@@ -18,8 +18,10 @@ static RTN_SEQ_ACT seq_clear_line(SHELL *shell, int c)
 static RTN_SEQ_ACT seq_backspace(SHELL *shell, int c)
 {
     if(shell->pwrite > shell->in_buffer)
+    {
         *shell->pwrite-- = '\0';
-    (*shell->printf)("\b \b");
+        (*shell->printf)("\b \b");
+    }
     return RTN_SEQ_ACT_END;
 }
 
@@ -49,6 +51,7 @@ static RTN_SEQ_ACT seq_ext_up(SHELL *shell, int c)
 
     rewrite_buffer(shell, buff);
     seq_clear_line(shell, c);
+    print_shell_prompt(shell);
     (*shell->printf)(buff);
 
     return RTN_SEQ_ACT_END;
@@ -65,6 +68,7 @@ static RTN_SEQ_ACT seq_ext_down(SHELL *shell, int c)
 
     rewrite_buffer(shell, buff);
     seq_clear_line(shell, c);
+    print_shell_prompt(shell);
     (*shell->printf)(buff);
 
     return RTN_SEQ_ACT_END;
