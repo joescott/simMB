@@ -27,15 +27,17 @@ addtohist(char *buff)
             phist_write++;
         phist_read = (phist_write-1);
     }
+
+    printf("\nADD HIST: %p %p %ld %s\n", phist_write, phist_read, phist_write-phist_read, *phist_read);
     return 0; 
 }
 
 char * 
 upfromhist(void)
 {
-    printf("%p %p %s\n", phist_write, phist_read, *phist_read);
-    return (phist_write-phist_read-1 >= 0)?
-        *++phist_read:*phist_read;
+    printf("\nUP HIST: %p %p %ld %s\n", phist_write, phist_read, phist_write-phist_read, *phist_read);
+    return (hist-phist_read >= 0)?
+        *(++phist_read):*phist_read;
 }
 
 char * 
