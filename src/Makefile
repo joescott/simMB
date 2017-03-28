@@ -55,5 +55,4 @@ $(BUILD_NUMBER_FILE): $(SRC_CORE) $(SRC_APP)
 
 test:
 	@make -C test 
-	@$(CC) $(OBJS_CORE_TEST) $(OBJS_APP) $(MODBUS_LIB) $(LDLIBS) $(LDFLAGS) \
-		test/test_shell.o -o test/test_shell && test/test_shell
+	@test/test

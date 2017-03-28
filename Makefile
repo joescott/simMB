@@ -35,4 +35,4 @@ clean:
 	@make -s -C $(SRCDIR) clean
 
 test:
-	@make -s -C $(SRCDIR) test
+	 @make -s -C $(SRCDIR) test

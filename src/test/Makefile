@@ -18,14 +18,19 @@ CFLAGS   += $(INCLUDE)
 CFLAGS   += -DVERSION=$(VERSION) -DPROGNAME=$(PROGNAME)
 CFLAGS   += -DBUILD_NUMBER=$(BUILD_NUMBER) -DBUILD_DATE=$(BUILD_DATE)
 
-SRC      = test_shell.c
+SRC      = test_main.c 
+SRC 	+= test_cbuffer.c ../core/cbuffer.c
 
 OBJS     = $(SRC:.c=.o)
 DEPS     = $(OBJS:.o=.d) 
 
 .PHONY: all clean test 
 
-all: $(OBJS)
+all: clean test
+	./test
+
+test: $(OBJS)
+	@$(CC) $(OBJS) -o test 
 
 clean:
 	@echo Cleaning Test Module $(PROGNAME) - Version $(VERSION).$(BUILD_NUMBER)
