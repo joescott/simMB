@@ -19,7 +19,7 @@ CFLAGS   += -DVERSION=$(VERSION) -DPROGNAME=$(PROGNAME)
 CFLAGS   += -DBUILD_NUMBER=$(BUILD_NUMBER) -DBUILD_DATE=$(BUILD_DATE)
 
 SRC      = debug.c utils.c main.c func_mb.c shell.c shell_cmds.c
-SRC      += mb_func.c shell_buffer_opt.c hist.c cbuffer.c
+SRC      += mb_func.c shell_buffer_opt.c hist.c cbuffer.c log.c
 
 OBJS     = $(SRC:.c=.o)
 DEPS     = $(OBJS:.o=.d) 

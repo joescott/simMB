@@ -8,6 +8,7 @@
 #include "mb_def.h"
 #include "mb_func.h"
 #include "sim.h"
+#include "log.h"
 
 /**
  * Transactional data 
@@ -24,6 +25,12 @@ typedef struct{
      * Global Debug
      */
     bool debug;
+
+    /**
+     * Log
+     */
+    int log_id;
+    char *log_filename;
 
     /**
      * Simulation
@@ -48,5 +55,12 @@ enum {
     EXIT_CODE, 
     EXIT_WARM_CODE 
 };
+
+/**
+ * Log definitions
+ */
+
+#define APP_LOG 0
+#define LOG_SIZE TSIZE_MB(5) 
 
 #endif

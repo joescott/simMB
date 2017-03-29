@@ -17,6 +17,7 @@
 #include <signal.h>
 
 #include "debug.h"
+#include "log.h"
 #include "screen.h"
 #include "utils.h"
 #include "common.h"
@@ -40,6 +41,7 @@ static MB_CONF_ST mb_conf=
 static DATA_ST d_st=
 {
     .debug=false,
+    .log_filename="./simMB.log",
     .sim.loop_time = 100000, /** msec */
 };
 
@@ -179,15 +181,19 @@ static void *mb_mng(void *data)
 	pthread_exit(NULL);
 }
 
-
 /**
  *  Main routine
  */
 int main(int argc, char *argv[])
 {
     char c;
+    int id;
 
     initSignals();
+    init_logfile(1);
+
+    if((id = assign_logfile(d_st.log_filename, LOG_SIZE)) < 0)
+        printf("Error en crear log\n");
 
     while ((c = getopt_long(argc, argv, _opts, longopts, NULL)) != EOF)
         switch (c)
@@ -242,6 +248,9 @@ int main(int argc, char *argv[])
         pthread_kill(main_threads[2], SIGHUP);
     }else
         main_error(EXIT_CODE, "ModBUS connection error: %s\n", modbus_strerror(errno));
+
+    deassign_logfile(id);
+    close_logfile();
 
     main_exit(EXIT_SUCCESS);
     return 0;

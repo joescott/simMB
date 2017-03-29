@@ -6,6 +6,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdbool.h>
+#include "common.h"
+#include "log.h"
 
 /**
  * Debug printf implementation
@@ -17,4 +19,10 @@ void debug_printf(bool debug, const char *fmt, ...)
 	if(debug)
 		vprintf(fmt, ap);
 	va_end(ap);
+
 }
+
+
+
+
+

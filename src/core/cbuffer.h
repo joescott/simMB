@@ -6,6 +6,7 @@ typedef struct {
    void **write;
    void **pool;
    unsigned int num_elements;
+   unsigned int num_total_elements;
 }CBUFF;
 
 CBUFF *init_cbuffer(const unsigned int num_elements);

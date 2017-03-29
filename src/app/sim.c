@@ -18,6 +18,7 @@ SIM_DATA_ST sim_data;
 
 void init_sim(SIM_ARGS)
 {
+#if 0
     DATA_ST *d_st = (DATA_ST*) data;
     d_st->sim.app = &sim_data;
 
@@ -35,10 +36,12 @@ void init_sim(SIM_ARGS)
     valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(STATUS,   0));
     valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(PESO_MAX, 7000));
     valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(INI_GRAF, 200));
+#endif
 }
 
 RTN_SIM sim(SIM_ARGS)
 {
+#if 0
     int status, peso, desp, max, min;
     DATA_ST *d_st = (DATA_ST*) data;
     SIM_CORE_ST *sim = &d_st->sim;
@@ -74,5 +77,6 @@ RTN_SIM sim(SIM_ARGS)
     if(last_st != app->status)
         debug_printf(true, "STATE: %s\n",sim_st_debug[app->status]);
     usleep(sim->loop_time);
+#endif
     return RTN_SIM_LOOP;
 }

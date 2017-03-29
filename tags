@@ -4,10 +4,10 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
-ACLOCAL	libmodbus/Makefile	/^ACLOCAL = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing aclocal-1.15$/;"	m
-ACLOCAL	libmodbus/doc/Makefile	/^ACLOCAL = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing aclocal-1.15$/;"	m
-ACLOCAL	libmodbus/src/Makefile	/^ACLOCAL = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing aclocal-1.15$/;"	m
-ACLOCAL	libmodbus/tests/Makefile	/^ACLOCAL = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing aclocal-1.15$/;"	m
+ACLOCAL	libmodbus/Makefile	/^ACLOCAL = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing aclocal-1.15$/;"	m
+ACLOCAL	libmodbus/doc/Makefile	/^ACLOCAL = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing aclocal-1.15$/;"	m
+ACLOCAL	libmodbus/src/Makefile	/^ACLOCAL = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing aclocal-1.15$/;"	m
+ACLOCAL	libmodbus/tests/Makefile	/^ACLOCAL = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing aclocal-1.15$/;"	m
 ACLOCAL_AMFLAGS	libmodbus/Makefile	/^ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}$/;"	m
 ACLOCAL_M4	libmodbus/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
 ACLOCAL_M4	libmodbus/doc/Makefile	/^ACLOCAL_M4 = $(top_srcdir)\/aclocal.m4$/;"	m
@@ -59,18 +59,18 @@ AS	libmodbus/src/Makefile	/^AS = as$/;"	m
 AS	libmodbus/tests/Makefile	/^AS = as$/;"	m
 ASFLAGS	src/Makefile	/^ASFLAGS  = -MD$/;"	m
 ASSERT_TRUE	libmodbus/tests/unit-test-client.c	34;"	d	file:
-AUTOCONF	libmodbus/Makefile	/^AUTOCONF = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing autoconf$/;"	m
-AUTOCONF	libmodbus/doc/Makefile	/^AUTOCONF = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing autoconf$/;"	m
-AUTOCONF	libmodbus/src/Makefile	/^AUTOCONF = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing autoconf$/;"	m
-AUTOCONF	libmodbus/tests/Makefile	/^AUTOCONF = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing autoconf$/;"	m
-AUTOHEADER	libmodbus/Makefile	/^AUTOHEADER = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing autoheader$/;"	m
-AUTOHEADER	libmodbus/doc/Makefile	/^AUTOHEADER = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing autoheader$/;"	m
-AUTOHEADER	libmodbus/src/Makefile	/^AUTOHEADER = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing autoheader$/;"	m
-AUTOHEADER	libmodbus/tests/Makefile	/^AUTOHEADER = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing autoheader$/;"	m
-AUTOMAKE	libmodbus/Makefile	/^AUTOMAKE = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing automake-1.15$/;"	m
-AUTOMAKE	libmodbus/doc/Makefile	/^AUTOMAKE = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing automake-1.15$/;"	m
-AUTOMAKE	libmodbus/src/Makefile	/^AUTOMAKE = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing automake-1.15$/;"	m
-AUTOMAKE	libmodbus/tests/Makefile	/^AUTOMAKE = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing automake-1.15$/;"	m
+AUTOCONF	libmodbus/Makefile	/^AUTOCONF = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing autoconf$/;"	m
+AUTOCONF	libmodbus/doc/Makefile	/^AUTOCONF = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing autoconf$/;"	m
+AUTOCONF	libmodbus/src/Makefile	/^AUTOCONF = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing autoconf$/;"	m
+AUTOCONF	libmodbus/tests/Makefile	/^AUTOCONF = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing autoconf$/;"	m
+AUTOHEADER	libmodbus/Makefile	/^AUTOHEADER = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing autoheader$/;"	m
+AUTOHEADER	libmodbus/doc/Makefile	/^AUTOHEADER = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing autoheader$/;"	m
+AUTOHEADER	libmodbus/src/Makefile	/^AUTOHEADER = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing autoheader$/;"	m
+AUTOHEADER	libmodbus/tests/Makefile	/^AUTOHEADER = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing autoheader$/;"	m
+AUTOMAKE	libmodbus/Makefile	/^AUTOMAKE = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing automake-1.15$/;"	m
+AUTOMAKE	libmodbus/doc/Makefile	/^AUTOMAKE = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing automake-1.15$/;"	m
+AUTOMAKE	libmodbus/src/Makefile	/^AUTOMAKE = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing automake-1.15$/;"	m
+AUTOMAKE	libmodbus/tests/Makefile	/^AUTOMAKE = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing automake-1.15$/;"	m
 AWK	libmodbus/Makefile	/^AWK = mawk$/;"	m
 AWK	libmodbus/doc/Makefile	/^AWK = mawk$/;"	m
 AWK	libmodbus/src/Makefile	/^AWK = mawk$/;"	m
@@ -88,6 +88,7 @@ BUILD_DATE	src/app/Makefile	/^BUILD_DATE=$$(date +'%Y%m%d')$/;"	m
 BUILD_DATE	src/core/Makefile	/^BUILD_DATE=$$(date +'%Y%m%d')$/;"	m
 BUILD_DATE	src/test/Makefile	/^BUILD_DATE=$$(date +'%Y%m%d')$/;"	m
 BUILD_NUMBER_FILE	Makefile	/^BUILD_NUMBER_FILE = ..\/BUILD$/;"	m
+CBUFF	src/core/cbuffer.h	/^}CBUFF;$/;"	t	typeref:struct:__anon35
 CC	libmodbus/Makefile	/^CC = gcc$/;"	m
 CC	libmodbus/doc/Makefile	/^CC = gcc$/;"	m
 CC	libmodbus/src/Makefile	/^CC = gcc$/;"	m
@@ -462,10 +463,10 @@ LT_SYS_LIBRARY_PATH	libmodbus/Makefile	/^LT_SYS_LIBRARY_PATH = $/;"	m
 LT_SYS_LIBRARY_PATH	libmodbus/doc/Makefile	/^LT_SYS_LIBRARY_PATH = $/;"	m
 LT_SYS_LIBRARY_PATH	libmodbus/src/Makefile	/^LT_SYS_LIBRARY_PATH = $/;"	m
 LT_SYS_LIBRARY_PATH	libmodbus/tests/Makefile	/^LT_SYS_LIBRARY_PATH = $/;"	m
-MAKEINFO	libmodbus/Makefile	/^MAKEINFO = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing makeinfo$/;"	m
-MAKEINFO	libmodbus/doc/Makefile	/^MAKEINFO = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing makeinfo$/;"	m
-MAKEINFO	libmodbus/src/Makefile	/^MAKEINFO = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing makeinfo$/;"	m
-MAKEINFO	libmodbus/tests/Makefile	/^MAKEINFO = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/missing makeinfo$/;"	m
+MAKEINFO	libmodbus/Makefile	/^MAKEINFO = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing makeinfo$/;"	m
+MAKEINFO	libmodbus/doc/Makefile	/^MAKEINFO = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing makeinfo$/;"	m
+MAKEINFO	libmodbus/src/Makefile	/^MAKEINFO = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing makeinfo$/;"	m
+MAKEINFO	libmodbus/tests/Makefile	/^MAKEINFO = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/missing makeinfo$/;"	m
 MAN3	libmodbus/doc/Makefile	/^MAN3 = $(TXT3:%.txt=%.3)$/;"	m
 MAN7	libmodbus/doc/Makefile	/^MAN7 = $(TXT7:%.txt=%.7)$/;"	m
 MANDIR	libstm/dlinkedlist/Makefile	/^MANDIR=\/usr\/local\/man\/man1\/$/;"	m
@@ -605,9 +606,9 @@ NORMAL_UNINSTALL	libmodbus/tests/Makefile	/^NORMAL_UNINSTALL = :$/;"	m
 NROFF	libmodbus/doc/Makefile	/^NROFF = nroff$/;"	m
 NUM_HIST	src/core/hist.c	5;"	d	file:
 NUM_OF_SHELL_VARS	src/core/shell_conf.h	61;"	d
-NUM_SEQ_IT_ELM	src/core/shell_buffer_opt.c	88;"	d	file:
-NUM_SHELL_CMDS	src/core/shell_cmds.c	161;"	d	file:
-NUM_SIM_ST	src/app/sim_app.h	/^    NUM_SIM_ST,$/;"	e	enum:__anon36
+NUM_SEQ_IT_ELM	src/core/shell_buffer_opt.c	92;"	d	file:
+NUM_SHELL_CMDS	src/core/shell_cmds.c	162;"	d	file:
+NUM_SIM_ST	src/app/sim_app.h	/^    NUM_SIM_ST,$/;"	e	enum:__anon37
 N_ST	libstm/stm.h	/^   N_ST,       \/*Normal State*\/$/;"	e	enum:__anon13
 OBJDUMP	libmodbus/Makefile	/^OBJDUMP = objdump$/;"	m
 OBJDUMP	libmodbus/doc/Makefile	/^OBJDUMP = objdump$/;"	m
@@ -699,6 +700,7 @@ PRINTF_SHELL_FUNC	src/core/shell.h	/^typedef void (*PRINTF_SHELL_FUNC)(const cha
 PROGNAME	Makefile	/^PROGNAME=simMB$/;"	m
 PROGNAME	libstm/dlinkedlist/Makefile	/^PROGNAME=test$/;"	m
 PROGRAMS	libmodbus/tests/Makefile	/^PROGRAMS = $(noinst_PROGRAMS)$/;"	m
+PROMPT	src/core/shell_conf.h	67;"	d
 PUT_CHAR_SHELL_FUNC	src/core/shell.h	/^typedef int (*PUT_CHAR_SHELL_FUNC)(int);$/;"	t
 PY_BUF_SIZE	libmodbus/src/modbus-rtu-private.h	34;"	d
 RANLIB	libmodbus/Makefile	/^RANLIB = ranlib$/;"	m
@@ -751,10 +753,10 @@ SHELL	libmodbus/doc/Makefile	/^SHELL = \/bin\/bash$/;"	m
 SHELL	libmodbus/src/Makefile	/^SHELL = \/bin\/bash$/;"	m
 SHELL	libmodbus/tests/Makefile	/^SHELL = \/bin\/bash$/;"	m
 SHELL	src/core/shell.h	/^} SHELL;$/;"	t	typeref:struct:__anon21
-SHELL_CMD	src/core/shell_cmds.h	/^}SHELL_CMD;$/;"	t	typeref:struct:__anon35
-SHELL_DEBUG	src/core/shell.c	23;"	d	file:
-SHELL_DEBUG_PRINT	src/core/shell.c	25;"	d	file:
-SHELL_DEBUG_PRINT	src/core/shell.c	49;"	d	file:
+SHELL_CMD	src/core/shell_cmds.h	/^}SHELL_CMD;$/;"	t	typeref:struct:__anon36
+SHELL_DEBUG	src/core/shell.c	25;"	d	file:
+SHELL_DEBUG_PRINT	src/core/shell.c	27;"	d	file:
+SHELL_DEBUG_PRINT	src/core/shell.c	51;"	d	file:
 SHELL_LINE_ARGS_GROUP	src/core/shell_conf.h	56;"	d
 SHELL_LINE_SEPARATOR	src/core/shell_conf.h	50;"	d
 SHELL_LINE_TERMINATOR	src/core/shell_conf.h	44;"	d
@@ -762,16 +764,16 @@ SHELL_LINE_TERMINATOR_LEN	src/core/shell_conf.h	45;"	d
 SHELL_SEQ_IT	src/core/shell_buffer_opt.h	/^}SHELL_SEQ_IT;$/;"	t	typeref:struct:__anon29
 SHELL_SEQ_ST	src/core/shell_buffer_opt.h	/^}SHELL_SEQ_ST;$/;"	t	typeref:struct:__anon30
 SHELL_VARS	src/core/shell.h	/^}SHELL_VARS;$/;"	t	typeref:struct:__anon20
-SHELL_VAR_TYPE	src/core/shell.h	/^typedef int16_t SHELL_VAR_TYPE;$/;"	t
+SHELL_VAR_TYPE	src/core/shell.h	/^typedef char * SHELL_VAR_TYPE;$/;"	t
 SHELL_VERSION	src/core/shell.h	/^}SHELL_VERSION;$/;"	t	typeref:struct:t_version
 SHUT_RDWR	libmodbus/src/modbus-tcp.c	30;"	d	file:
 SIM_ARGS	src/core/sim.h	10;"	d
 SIM_CORE_ST	src/core/sim.h	/^}SIM_CORE_ST;$/;"	t	typeref:struct:__anon16
-SIM_DATA_ST	src/app/sim_app.h	/^}SIM_DATA_ST;$/;"	t	typeref:struct:__anon37
-SIM_ST	src/app/sim_app.h	/^}SIM_ST;$/;"	t	typeref:enum:__anon36
-SIM_ST_IDLE	src/app/sim_app.h	/^    SIM_ST_IDLE,$/;"	e	enum:__anon36
-SIM_ST_MAX	src/app/sim_app.h	/^    SIM_ST_MAX,$/;"	e	enum:__anon36
-SIM_ST_SEARCHING	src/app/sim_app.h	/^    SIM_ST_SEARCHING,$/;"	e	enum:__anon36
+SIM_DATA_ST	src/app/sim_app.h	/^}SIM_DATA_ST;$/;"	t	typeref:struct:__anon38
+SIM_ST	src/app/sim_app.h	/^}SIM_ST;$/;"	t	typeref:enum:__anon37
+SIM_ST_IDLE	src/app/sim_app.h	/^    SIM_ST_IDLE,$/;"	e	enum:__anon37
+SIM_ST_MAX	src/app/sim_app.h	/^    SIM_ST_MAX,$/;"	e	enum:__anon37
+SIM_ST_SEARCHING	src/app/sim_app.h	/^    SIM_ST_SEARCHING,$/;"	e	enum:__anon37
 SOURCES	libmodbus/Makefile	/^SOURCES =$/;"	m
 SOURCES	libmodbus/doc/Makefile	/^SOURCES =$/;"	m
 SOURCES	libmodbus/src/Makefile	/^SOURCES = $(libmodbus_la_SOURCES)$/;"	m
@@ -779,7 +781,7 @@ SOURCES	libmodbus/tests/Makefile	/^SOURCES = $(bandwidth_client_SOURCES) \\$/;"	
 SOURCE_EXTENSIONS	src/.ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.c','.h' ]$/;"	v
 SRC	src/app/Makefile	/^SRC      = sim.c shell_cmds_app.c$/;"	m
 SRC	src/core/Makefile	/^SRC      = debug.c utils.c main.c func_mb.c shell.c shell_cmds.c$/;"	m
-SRC	src/test/Makefile	/^SRC      = test_shell.c$/;"	m
+SRC	src/test/Makefile	/^SRC      = test_main.c $/;"	m
 SRCDIR	Makefile	/^SRCDIR=src $/;"	m
 SRC_APP	src/Makefile	/^SRC_APP  = app$/;"	m
 SRC_CORE	src/Makefile	/^SRC_CORE = core$/;"	m
@@ -909,6 +911,7 @@ _STEP_META	libmodbus/src/modbus.c	/^    _STEP_META,$/;"	e	enum:__anon7	file:
 _STR	src/core/macro_utils.h	12;"	d
 _TANDEM_SOURCE	libmodbus/config.h	181;"	d
 _UNIT_TEST_H_	libmodbus/tests/unit-test.h	9;"	d
+__CBUFFER_H__	src/core/cbuffer.h	2;"	d
 __COMMON_H__	src/core/common.h	2;"	d
 __DEBUG__	src/core/debug.h	5;"	d
 __DLIST_H__	libstm/dlinkedlist/dlist.h	3;"	d
@@ -985,22 +988,22 @@ _sleep_response_timeout	libmodbus/src/modbus.c	/^static void _sleep_response_tim
 _step_t	libmodbus/src/modbus.c	/^} _step_t;$/;"	t	typeref:enum:__anon7	file:
 _verify	src/test/tdd.h	6;"	d
 abrir_puerto	src/core/utils.c	/^int abrir_puerto(xMBHandle *xMBMMaster, SERIAL_PORT_ST *serial)$/;"	f
-abs_builddir	libmodbus/Makefile	/^abs_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
-abs_builddir	libmodbus/doc/Makefile	/^abs_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/doc$/;"	m
-abs_builddir	libmodbus/src/Makefile	/^abs_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/src$/;"	m
-abs_builddir	libmodbus/tests/Makefile	/^abs_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/tests$/;"	m
-abs_srcdir	libmodbus/Makefile	/^abs_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
-abs_srcdir	libmodbus/doc/Makefile	/^abs_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/doc$/;"	m
-abs_srcdir	libmodbus/src/Makefile	/^abs_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/src$/;"	m
-abs_srcdir	libmodbus/tests/Makefile	/^abs_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/tests$/;"	m
-abs_top_builddir	libmodbus/Makefile	/^abs_top_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
-abs_top_builddir	libmodbus/doc/Makefile	/^abs_top_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
-abs_top_builddir	libmodbus/src/Makefile	/^abs_top_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
-abs_top_builddir	libmodbus/tests/Makefile	/^abs_top_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
-abs_top_srcdir	libmodbus/Makefile	/^abs_top_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
-abs_top_srcdir	libmodbus/doc/Makefile	/^abs_top_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
-abs_top_srcdir	libmodbus/src/Makefile	/^abs_top_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
-abs_top_srcdir	libmodbus/tests/Makefile	/^abs_top_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus$/;"	m
+abs_builddir	libmodbus/Makefile	/^abs_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
+abs_builddir	libmodbus/doc/Makefile	/^abs_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/doc$/;"	m
+abs_builddir	libmodbus/src/Makefile	/^abs_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/src$/;"	m
+abs_builddir	libmodbus/tests/Makefile	/^abs_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/tests$/;"	m
+abs_srcdir	libmodbus/Makefile	/^abs_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
+abs_srcdir	libmodbus/doc/Makefile	/^abs_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/doc$/;"	m
+abs_srcdir	libmodbus/src/Makefile	/^abs_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/src$/;"	m
+abs_srcdir	libmodbus/tests/Makefile	/^abs_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/tests$/;"	m
+abs_top_builddir	libmodbus/Makefile	/^abs_top_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
+abs_top_builddir	libmodbus/doc/Makefile	/^abs_top_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
+abs_top_builddir	libmodbus/src/Makefile	/^abs_top_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
+abs_top_builddir	libmodbus/tests/Makefile	/^abs_top_builddir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
+abs_top_srcdir	libmodbus/Makefile	/^abs_top_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
+abs_top_srcdir	libmodbus/doc/Makefile	/^abs_top_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
+abs_top_srcdir	libmodbus/src/Makefile	/^abs_top_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
+abs_top_srcdir	libmodbus/tests/Makefile	/^abs_top_srcdir = \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus$/;"	m
 ac_ct_AR	libmodbus/Makefile	/^ac_ct_AR = ar$/;"	m
 ac_ct_AR	libmodbus/doc/Makefile	/^ac_ct_AR = ar$/;"	m
 ac_ct_AR	libmodbus/src/Makefile	/^ac_ct_AR = ar$/;"	m
@@ -1053,7 +1056,7 @@ add_time_mlls	src/core/utils.c	/^void add_time_mlls(struct timeval *time, int64_
 addr	src/core/func_mb.h	/^	const unsigned int addr;$/;"	m	struct:__anon23
 addtohist	src/core/hist.c	/^addtohist(char *buff)$/;"	f
 aix_post_process_depfile	libmodbus/build-aux/depcomp	/^aix_post_process_depfile ()$/;"	f
-all_test	src/test/test_shell.c	/^int all_test()$/;"	f
+all_test	src/test/test_main.c	/^int all_test()$/;"	f
 am__CONFIG_DISTCLEAN_FILES	libmodbus/Makefile	/^am__CONFIG_DISTCLEAN_FILES = config.status config.cache config.log \\$/;"	m
 am__DIST_COMMON	libmodbus/Makefile	/^am__DIST_COMMON = $(srcdir)\/Makefile.in $(srcdir)\/config.h.in \\$/;"	m
 am__DIST_COMMON	libmodbus/doc/Makefile	/^am__DIST_COMMON = $(srcdir)\/Makefile.in$/;"	m
@@ -1254,7 +1257,7 @@ append_node	libstm/dlinkedlist/dlist.c	/^append_node(DLLIST *dll,DLLIST_NODE *ln
 arg	libstm/stm.h	/^	void *arg;$/;"	m	struct:__anon12
 argc	src/core/func_mb.h	/^	const uint8_t argc;$/;"	m	struct:__anon22
 argc	src/core/shell.h	/^    int  argc;                              \/**< Number of arguments counter. *\/$/;"	m	struct:__anon21
-argc	src/core/shell_cmds.h	/^    unsigned int argc;  \/**< Number of arguments expected *\/$/;"	m	struct:__anon35
+argc	src/core/shell_cmds.h	/^    unsigned int argc;  \/**< Number of arguments expected *\/$/;"	m	struct:__anon36
 argv	src/core/shell.h	/^    char argv[MAX_ARGS_CNT][MAX_ARGS_LEN];  \/**< Command arguments. *\/$/;"	m	struct:__anon21
 as_fn_append	libmodbus/config.status	/^  as_fn_append ()$/;"	f
 as_fn_append	libmodbus/configure	/^  as_fn_append ()$/;"	f
@@ -1347,15 +1350,16 @@ check_confirmation	libmodbus/src/modbus.c	/^static int check_confirmation(modbus
 check_integrity	libmodbus/src/modbus-private.h	/^    int (*check_integrity) (modbus_t *ctx, uint8_t *msg,$/;"	m	struct:_modbus_backend
 checksum_length	libmodbus/src/modbus-private.h	/^    unsigned int checksum_length;$/;"	m	struct:_modbus_backend
 chtbl	src/core/utils.c	/^static HTML_CONVERT chtbl[]={$/;"	v	file:
+clean_cbuffer	src/core/cbuffer.c	/^void clean_cbuffer(CBUFF *cbuff)$/;"	f
 clean_mb	src/core/mb_func.c	/^void clean_mb(MB_DATA_ST *mb_data)$/;"	f
 close	libmodbus/src/modbus-private.h	/^    void (*close) (modbus_t *ctx);$/;"	m	struct:_modbus_backend
 close	libmodbus/src/modbus-tcp.c	31;"	d	file:
 close	libmodbus/tests/bandwidth-server-one.c	18;"	d	file:
 close_shell	src/core/shell.c	/^void close_shell(SHELL *shell)$/;"	f
 close_sigint	libmodbus/tests/bandwidth-server-many-up.c	/^static void close_sigint(int dummy)$/;"	f	file:
-cmd	src/core/shell_cmds.h	/^    char *cmd;          \/**< Command string *\/$/;"	m	struct:__anon35
-cmd_func	src/core/shell_cmds.h	/^    CMD_FUNC cmd_func;  \/**< Pointer to function who implements command *\/$/;"	m	struct:__anon35
-cnt	src/app/sim_app.h	/^    int  cnt;$/;"	m	struct:__anon37
+cmd	src/core/shell_cmds.h	/^    char *cmd;          \/**< Command string *\/$/;"	m	struct:__anon36
+cmd_func	src/core/shell_cmds.h	/^    CMD_FUNC cmd_func;  \/**< Pointer to function who implements command *\/$/;"	m	struct:__anon36
+cnt	src/app/sim_app.h	/^    int  cnt;$/;"	m	struct:__anon38
 common_ldflags	libmodbus/tests/Makefile	/^common_ldflags = \\$/;"	m
 compiler	libmodbus/src/win32/configure.js	/^var compiler = "msvc";$/;"	v
 compute_data_length_after_meta	libmodbus/src/modbus.c	/^static int compute_data_length_after_meta(modbus_t *ctx, uint8_t *msg,$/;"	f	file:
@@ -1428,8 +1432,6 @@ docdir	libmodbus/tests/Makefile	/^docdir = ${datarootdir}\/doc\/${PACKAGE_TARNAM
 downfromhist	src/core/hist.c	/^downfromhist(void)$/;"	f
 dryRun	libmodbus/src/win32/configure.js	/^var dryRun = false;$/;"	v
 dsetlock_dllist	libstm/dlinkedlist/dlist.c	/^dsetlock_dllist(DLLIST *dll, int status, const char *ff, int line)$/;"	f
-dummy_fail	src/test/test_shell.c	/^int dummy_fail()$/;"	f
-dummy_pass	src/test/test_shell.c	/^int dummy_pass()$/;"	f
 dvidir	libmodbus/Makefile	/^dvidir = ${docdir}$/;"	m
 dvidir	libmodbus/doc/Makefile	/^dvidir = ${docdir}$/;"	m
 dvidir	libmodbus/src/Makefile	/^dvidir = ${docdir}$/;"	m
@@ -1776,8 +1778,7 @@ gettime_ms	libmodbus/tests/bandwidth-client.c	/^static uint32_t gettime_ms(void)
 give_advice	libmodbus/build-aux/missing	/^give_advice ()$/;"	f
 head	libstm/dlinkedlist/dlist.h	/^DLLIST_NODE *head;$/;"	m	struct:dllist
 header_length	libmodbus/src/modbus-private.h	/^    unsigned int header_length;$/;"	m	struct:_modbus_backend
-help	src/core/shell_cmds.h	/^    char *help;         \/**< Help message *\/$/;"	m	struct:__anon35
-hist	src/core/hist.c	/^char *hist[NUM_HIST];$/;"	v
+help	src/core/shell_cmds.h	/^    char *help;         \/**< Help message *\/$/;"	m	struct:__anon36
 history_substate	libstm/stm.h	/^	struct stm_state *history_substate;$/;"	m	struct:stm_state	typeref:struct:stm_state::stm_state
 host	libmodbus/Makefile	/^host = x86_64-pc-linux-gnu$/;"	m
 host	libmodbus/doc/Makefile	/^host = x86_64-pc-linux-gnu$/;"	m
@@ -1829,16 +1830,17 @@ init	libstm/stm.h	/^	void (*init)(struct stm_machine *,STM_STATE_ID);$/;"	m	stru
 initSignals	src/core/main.c	/^static void initSignals()$/;"	f	file:
 initSubState	libstm/stm.c	/^initSubState(STM_STATE *st, STM_STATE_ID id)$/;"	f
 initSubState	libstm/stm.h	/^	void (*initSubState)(struct stm_state *st,STM_STATE_ID);$/;"	m	struct:stm_state
+init_cbuffer	src/core/cbuffer.c	/^CBUFF *init_cbuffer(const unsigned int num_elements)$/;"	f
 init_mb	src/core/mb_func.c	/^MB_DATA_ST *init_mb(MB_CONF_ST *mb_conf)$/;"	f
 init_shell	src/core/shell.c	/^SHELL *init_shell(GET_CHAR_SHELL_FUNC get_char_func, $/;"	f
 init_sim	src/app/sim.c	/^void init_sim(SIM_ARGS)$/;"	f
 inithist	src/core/hist.c	/^inithist(void)$/;"	f
 insert	libstm/dlinkedlist/dlist.h	/^void (*insert)(struct dllist*,DLLIST_NODE*, DLLIST_NODE*);$/;"	m	struct:dllist
 insert_node	libstm/dlinkedlist/dlist.c	/^insert_node(DLLIST *dll,DLLIST_NODE *lnode, DLLIST_NODE *after) $/;"	f	file:
-install_sh	libmodbus/Makefile	/^install_sh = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/install-sh$/;"	m
-install_sh	libmodbus/doc/Makefile	/^install_sh = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/install-sh$/;"	m
-install_sh	libmodbus/src/Makefile	/^install_sh = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/install-sh$/;"	m
-install_sh	libmodbus/tests/Makefile	/^install_sh = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simmb\/libmodbus\/build-aux\/install-sh$/;"	m
+install_sh	libmodbus/Makefile	/^install_sh = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/install-sh$/;"	m
+install_sh	libmodbus/doc/Makefile	/^install_sh = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/install-sh$/;"	m
+install_sh	libmodbus/src/Makefile	/^install_sh = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/install-sh$/;"	m
+install_sh	libmodbus/tests/Makefile	/^install_sh = ${SHELL} \/home\/jcourett\/proyectos\/001-Tools\/simMB\/libmodbus\/build-aux\/install-sh$/;"	m
 install_sh_DATA	libmodbus/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
 install_sh_DATA	libmodbus/doc/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
 install_sh_DATA	libmodbus/src/Makefile	/^install_sh_DATA = $(install_sh) -c -m 644$/;"	m
@@ -1893,7 +1895,7 @@ localstatedir	libmodbus/src/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
 localstatedir	libmodbus/tests/Makefile	/^localstatedir = ${prefix}\/var$/;"	m
 longopts	src/core/main.c	/^static struct option longopts[] =$/;"	v	typeref:struct:option	file:
 loop_time	src/core/sim.h	/^    int loop_time;$/;"	m	struct:__anon16
-m_factor	src/app/sim_app.h	/^    int  m_factor;$/;"	m	struct:__anon37
+m_factor	src/app/sim_app.h	/^    int  m_factor;$/;"	m	struct:__anon38
 main	libmodbus/build-aux/config.guess	/^		main()$/;"	f
 main	libmodbus/build-aux/config.guess	/^	main ()$/;"	f
 main	libmodbus/tests/bandwidth-client.c	/^int main(int argc, char *argv[])$/;"	f
@@ -1907,7 +1909,7 @@ main	libmodbus/tests/version.c	/^int main(void)$/;"	f
 main	libstm/dlinkedlist/main.c	/^main(void) $/;"	f
 main	libstm/test/main.c	/^main(void) $/;"	f
 main	src/core/main.c	/^int main(int argc, char *argv[])$/;"	f
-main	src/test/test_shell.c	/^int main(int argc, char **argv)$/;"	f
+main	src/test/test_main.c	/^int main(int argc, char **argv)$/;"	f
 main_cmd	src/core/main.c	/^static void *main_cmd(void *data)$/;"	f	file:
 main_error	src/core/main.c	/^static void main_error(int exit, const char *fmt, ...)$/;"	f	file:
 main_exit	src/core/main.c	/^static void main_exit(int status)$/;"	f	file:
@@ -2037,6 +2039,7 @@ next	libstm/stm.h	/^    STM_STATE *next;$/;"	m	struct:__anon14
 node	libmodbus/src/modbus-tcp-private.h	/^    char node[_MODBUS_TCP_PI_NODE_LENGTH];$/;"	m	struct:_modbus_tcp_pi
 noinst_PROGRAMS	libmodbus/tests/Makefile	/^noinst_PROGRAMS = bandwidth-server-one$(EXEEXT) \\$/;"	m
 noinst_SCRIPTS	libmodbus/tests/Makefile	/^noinst_SCRIPTS = unit-tests.sh$/;"	m
+num_elements	src/core/cbuffer.h	/^   unsigned int num_elements;$/;"	m	struct:__anon35
 objects	libstm/dlinkedlist/Makefile	/^objects:=$(patsubst %.c,%.o,$(wildcard *.c))$/;"	m
 objects_lib	libstm/dlinkedlist/Makefile	/^objects_lib:=$(patsubst %.c,%.o,$(LIB_LIST))$/;"	m
 old_dcb	libmodbus/src/modbus-rtu-private.h	/^    DCB old_dcb;$/;"	m	struct:_modbus_rtu
@@ -2056,8 +2059,6 @@ pdfdir	libmodbus/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	libmodbus/doc/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	libmodbus/src/Makefile	/^pdfdir = ${docdir}$/;"	m
 pdfdir	libmodbus/tests/Makefile	/^pdfdir = ${docdir}$/;"	m
-phist_read	src/core/hist.c	/^char **phist_read;$/;"	v
-phist_write	src/core/hist.c	/^char **phist_write;$/;"	v
 pkgconfig_DATA	libmodbus/Makefile	/^pkgconfig_DATA = libmodbus.pc$/;"	m
 pkgconfigdir	libmodbus/Makefile	/^pkgconfigdir = $(libdir)\/pkgconfig$/;"	m
 pkgdatadir	libmodbus/Makefile	/^pkgdatadir = $(datadir)\/libmodbus$/;"	m
@@ -2076,6 +2077,7 @@ pkglibexecdir	libmodbus/Makefile	/^pkglibexecdir = $(libexecdir)\/libmodbus$/;"	
 pkglibexecdir	libmodbus/doc/Makefile	/^pkglibexecdir = $(libexecdir)\/libmodbus$/;"	m
 pkglibexecdir	libmodbus/src/Makefile	/^pkglibexecdir = $(libexecdir)\/libmodbus$/;"	m
 pkglibexecdir	libmodbus/tests/Makefile	/^pkglibexecdir = $(libexecdir)\/libmodbus$/;"	m
+pool	src/core/cbuffer.h	/^   void **pool;$/;"	m	struct:__anon35
 port	libmodbus/src/modbus-tcp-private.h	/^    int port;$/;"	m	struct:_modbus_tcp
 port	libmodbus/src/modbus-tcp-private.h	/^    int port;$/;"	m	struct:_modbus_tcp_pi
 port_baud	src/core/mb_func.h	/^	int  port_baud;$/;"	m	struct:__anon31
@@ -2090,6 +2092,7 @@ prefix	libmodbus/src/Makefile	/^prefix = \/usr\/local$/;"	m
 prefix	libmodbus/tests/Makefile	/^prefix = \/usr\/local$/;"	m
 prepare_response_tid	libmodbus/src/modbus-private.h	/^    int (*prepare_response_tid) (const uint8_t *req, int *req_length);$/;"	m	struct:_modbus_backend
 prev	libstm/dlinkedlist/dlist.h	/^struct dllist_node *prev;$/;"	m	struct:dllist_node	typeref:struct:dllist_node::dllist_node
+print_shell_prompt	src/core/shell.c	/^void print_shell_prompt(SHELL *shell)$/;"	f
 print_usage	libmodbus/build-aux/test-driver	/^print_usage ()$/;"	f
 print_version	src/core/main.c	/^static void print_version()$/;"	f	file:
 printf	src/core/shell.h	/^    PRINTF_SHELL_FUNC printf;               \/**< Printf function pointer. *\/$/;"	m	struct:__anon21
@@ -2119,8 +2122,10 @@ random_test_server_DEPENDENCIES	libmodbus/tests/Makefile	/^random_test_server_DE
 random_test_server_LDADD	libmodbus/tests/Makefile	/^random_test_server_LDADD = $(common_ldflags)$/;"	m
 random_test_server_OBJECTS	libmodbus/tests/Makefile	/^random_test_server_OBJECTS = $(am_random_test_server_OBJECTS)$/;"	m
 random_test_server_SOURCES	libmodbus/tests/Makefile	/^random_test_server_SOURCES = random-test-server.c$/;"	m
+read	src/core/cbuffer.h	/^   void **read;$/;"	m	struct:__anon35
 readAOHReg	src/core/mb_func.c	/^static int readAOHReg(MB_DATA_ST *mb_data)$/;"	f	file:
 readDOCoil	src/core/mb_func.c	/^static int readDOCoil(MB_DATA_ST *mb_data)$/;"	f	file:
+read_cbuffer	src/core/cbuffer.c	/^void* read_cbuffer(CBUFF *cbuff)$/;"	f
 read_io_status	libmodbus/src/modbus.c	/^static int read_io_status(modbus_t *ctx, int function,$/;"	f	file:
 read_line	src/core/shell.c	/^RTN_SLINE_READ read_line(SHELL *shell)$/;"	f
 read_registers	libmodbus/src/modbus.c	/^static int read_registers(modbus_t *ctx, int function, int addr, int nb,$/;"	f	file:
@@ -2195,7 +2200,7 @@ shell	src/core/shell.c	/^static SHELL shell = {$/;"	v	file:
 shell_cmd_app_tbl	src/app/shell_cmds_app.c	/^const SHELL_CMD shell_cmd_app_tbl[]={$/;"	v
 shell_cmd_tbl	src/core/shell_cmds.c	/^const SHELL_CMD shell_cmd_tbl[]={$/;"	v
 shell_debug_print_buffer	src/core/shell.c	/^    static inline void shell_debug_print_buffer(SHELL *shell)$/;"	f	file:
-shell_debug_print_buffer	src/core/shell.c	50;"	d	file:
+shell_debug_print_buffer	src/core/shell.c	52;"	d	file:
 shell_special_seq	src/core/shell_buffer_opt.c	/^RTN_SEQ shell_special_seq(SHELL *shell, int c)$/;"	f
 sigHandler	src/core/main.c	/^static void sigHandler(int signal)$/;"	f	file:
 sim	src/app/sim.c	/^RTN_SIM sim(SIM_ARGS)$/;"	f
@@ -2221,7 +2226,7 @@ start_state	libstm/stm.h	/^	STM_STATE *start_state;$/;"	m	struct:stm_machine
 start_substate	libstm/stm.h	/^	struct stm_state *start_substate;$/;"	m	struct:stm_state	typeref:struct:stm_state::stm_state
 state	libstm/stm.h	/^	DLLIST *state;$/;"	m	struct:stm_machine
 state_cmp	libstm/stm.c	/^state_cmp(void *d1,void *d2)$/;"	f	file:
-status	src/app/sim_app.h	/^    int  status;$/;"	m	struct:__anon37
+status	src/app/sim_app.h	/^    int  status;$/;"	m	struct:__anon38
 status	src/core/shell.h	/^    unsigned int  status;$/;"	m	struct:__anon20
 stm_machine	libstm/stm.h	/^typedef struct stm_machine{$/;"	s
 stm_state	libstm/stm.h	/^typedef struct stm_state{$/;"	s
@@ -2258,9 +2263,12 @@ target_alias	libmodbus/doc/Makefile	/^target_alias = $/;"	m
 target_alias	libmodbus/src/Makefile	/^target_alias = $/;"	m
 target_alias	libmodbus/tests/Makefile	/^target_alias = $/;"	m
 test	libstm/test/main.c	/^test(STM_MACHINE *stm, STM_EVENT *event)$/;"	f	file:
+test_cbuffer	src/test/test_cbuffer.c	/^int test_cbuffer()$/;"	f
+test_init_cbuffer	src/test/test_cbuffer.c	/^int test_init_cbuffer()$/;"	f
 test_server	libmodbus/tests/unit-test-client.c	/^int test_server(modbus_t *ctx, int use_backend)$/;"	f
 test_varargs_macros	libmodbus/configure	/^  test_varargs_macros ();$/;"	f
-tests_run	src/test/test_shell.c	/^int tests_run = 0;$/;"	v
+test_write_read_cbuffer	src/test/test_cbuffer.c	/^int test_write_read_cbuffer()$/;"	f
+tests_run	src/test/test_cbuffer.c	/^int tests_run = 0;$/;"	v
 timespecDiffms	src/core/utils.c	/^int64_t timespecDiffms(struct timeval *timeA_p, struct timeval *timeB_p)$/;"	f
 top_build_prefix	libmodbus/Makefile	/^top_build_prefix = $/;"	m
 top_build_prefix	libmodbus/doc/Makefile	/^top_build_prefix = ..\/$/;"	m
@@ -2310,8 +2318,10 @@ win32_ser	libmodbus/src/modbus-rtu-private.h	/^struct win32_ser {$/;"	s
 win32_ser_init	libmodbus/src/modbus-rtu.c	/^static void win32_ser_init(struct win32_ser *ws)$/;"	f	file:
 win32_ser_read	libmodbus/src/modbus-rtu.c	/^static int win32_ser_read(struct win32_ser *ws, uint8_t *p_msg,$/;"	f	file:
 win32_ser_select	libmodbus/src/modbus-rtu.c	/^static int win32_ser_select(struct win32_ser *ws, int max_len,$/;"	f	file:
+write	src/core/cbuffer.h	/^   void **write;$/;"	m	struct:__anon35
 writeAOHReg	src/core/mb_func.c	/^static int writeAOHReg(MB_DATA_ST *mb_data)$/;"	f	file:
 writeAOMHReg	src/core/mb_func.c	/^static int writeAOMHReg(MB_DATA_ST *mb_data)$/;"	f	file:
 writeDOCoil	src/core/mb_func.c	/^static int writeDOCoil(MB_DATA_ST *mb_data)$/;"	f	file:
+write_cbuffer	src/core/cbuffer.c	/^int write_cbuffer(CBUFF *cbuff, void *element)$/;"	f
 write_single	libmodbus/src/modbus.c	/^static int write_single(modbus_t *ctx, int function, int addr, int value)$/;"	f	file:
-z_factor	src/app/sim_app.h	/^    int  z_factor;$/;"	m	struct:__anon37
+z_factor	src/app/sim_app.h	/^    int  z_factor;$/;"	m	struct:__anon38
