@@ -2,13 +2,26 @@
 #include <stdlib.h>
 #include "cbuffer.h"
 
+static int get_cbuff_elements(CBUFF *cbuff)
+{
+    if(cbuff->read < cbuff->write)
+        return cbuff->write - cbuff->read;
+    else if(cbuff->read > cbuff->write)
+        return (cbuff->write - cbuff->pool) + 
+            ((cbuff->pool+cbuff->num_total_elements) - cbuff->read)+1;
+    else
+        return 0;
+}
+
 static void inc_readcbuffer(CBUFF *cbuff)
 {
     if(cbuff->read != cbuff->write)
+    {
         if(!((cbuff->read + 1 - cbuff->pool) % cbuff->num_total_elements))
             cbuff->read = cbuff->pool;
         else
             cbuff->read++;
+    }
 }
 
 static void inc_writecbuffer(CBUFF *cbuff)
@@ -17,6 +30,9 @@ static void inc_writecbuffer(CBUFF *cbuff)
         cbuff->write = cbuff->pool;
     else
         cbuff->write++;
+
+    if(cbuff->read == cbuff->write)
+            cbuff->read++;
 }
 
 CBUFF *init_cbuffer(const unsigned int num_elements)
@@ -37,13 +53,12 @@ void clean_cbuffer(CBUFF *cbuff)
 
 void* read_cbuffer(CBUFF *cbuff)
 {
-    cbuff->num_elements++;
-    return *cbuff->read++;
+    return *cbuff->read;
 }
 
 int write_cbuffer(CBUFF *cbuff, void *element)
 {
-    *cbuff->write++ = element;
-    cbuff->num_elements++;
-    return cbuff->num_elements; 
+    *cbuff->write = element;
+    inc_writecbuffer(cbuff);
+    return get_cbuff_elements(cbuff); 
 }
