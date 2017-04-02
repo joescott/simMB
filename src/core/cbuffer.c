@@ -2,45 +2,71 @@
 #include <stdlib.h>
 #include "cbuffer.h"
 
-static int get_cbuff_elements(CBUFF *cbuff)
+int get_cbuff_elements(CBUFF *cbuff)
 {
-    if(cbuff->read < cbuff->write)
-        return cbuff->write - cbuff->read;
-    else if(cbuff->read > cbuff->write)
-        return (cbuff->write - cbuff->pool) + 
-            ((cbuff->pool+cbuff->num_total_elements) - cbuff->read)+1;
+    int num; 
+    if(cbuff->read > cbuff->write)
+        num = (cbuff->write - cbuff->pool) + 
+            (cbuff->pool + cbuff->num_total - cbuff->read) + 1;
+    else if(cbuff->read < cbuff->write)
+        num = cbuff->write - cbuff->read;
     else
-        return 0;
-}
-
-static void inc_readcbuffer(CBUFF *cbuff)
-{
-    if(cbuff->read != cbuff->write)
     {
-        if(!((cbuff->read + 1 - cbuff->pool) % cbuff->num_total_elements))
-            cbuff->read = cbuff->pool;
+        if(*cbuff->write == NULL)
+            num = cbuff->write - cbuff->read;
         else
-            cbuff->read++;
+            num = cbuff->num_total;
     }
+    return num;
 }
 
-static void inc_writecbuffer(CBUFF *cbuff)
+int inc_readcbuffer(CBUFF *cbuff,int force)
 {
-    if(!((cbuff->write + 1 - cbuff->pool) % cbuff->num_total_elements))
-        cbuff->write = cbuff->pool;
-    else
-        cbuff->write++;
+    void **lread = cbuff->read;
+    if(force || cbuff->read != cbuff->write)
+    {
+        cbuff->read = cbuff->pool + (cbuff->read + 1 - cbuff->pool)%cbuff->num_total;
+        if(cbuff->read == cbuff->write)
+        {
+            cbuff->read = lread;
+            return 0;
+        } 
+        return 1;
+    }
+    return 0;
+}
 
-    if(cbuff->read == cbuff->write)
-            cbuff->read++;
+int dec_readcbuffer(CBUFF *cbuff, int force)
+{
+    void **lread = cbuff->read;
+    if(force || cbuff->read != cbuff->write)
+    {
+        cbuff->read = cbuff->pool + ((cbuff->read - 1 - cbuff->pool)%cbuff->num_total);
+        if(cbuff->read == cbuff->write)
+        { 
+            cbuff->read = lread;
+            return 0;
+        }
+        return 1;
+    }
+    return 0;
+}
+
+int inc_writecbuffer(CBUFF *cbuff)
+{
+    cbuff->write = cbuff->pool + ((cbuff->write + 1 - cbuff->pool)%cbuff->num_total);
+
+    if(*cbuff->write)
+        cbuff->read = cbuff->write;
+
+    return get_cbuff_elements(cbuff);
 }
 
 CBUFF *init_cbuffer(const unsigned int num_elements)
 {
     CBUFF *cbuff = (CBUFF *)malloc(sizeof(CBUFF));
     cbuff->pool = (void**)calloc(num_elements,sizeof(void*));
-    cbuff->num_total_elements = num_elements;
-    cbuff->num_elements = 0;
+    cbuff->num_total = num_elements;
     cbuff->read = cbuff->write = cbuff->pool;
     return cbuff;
 }

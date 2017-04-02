@@ -27,7 +27,7 @@ DEPS     = $(OBJS:.o=.d)
 .PHONY: all clean test 
 
 all: clean test
-	./test
+	#./test
 
 test: $(OBJS)
 	@$(CC) $(OBJS) -o test 

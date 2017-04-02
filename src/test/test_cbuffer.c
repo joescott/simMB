@@ -33,18 +33,31 @@ int test_increment_cbuffer()
 {
     int i;
     char *c;
+    /** Init 3 elements Buffer */
     CBUFF *cb = init_cbuffer(3);
+    /** Add a first string */ 
     i = write_cbuffer(cb,(void*)"TEST1");
     _assert(i == 1);
+    /** Add a second string */ 
     i = write_cbuffer(cb,(void*)"TEST2");
     _assert(i == 2);
+    /** Add a third string */ 
     i = write_cbuffer(cb,(void*)"TEST3");
     _assert(i == 3);
+    /** Add a fourth string but losing first one */ 
     i = write_cbuffer(cb,(void*)"TEST4");
     _assert(i == 3);
+    /** Read second string added */
     c = (char *) read_cbuffer(cb);
-    printf("%s\n",c);
+    _assert(i == 3);
     _assert(strcmp(c,"TEST2")==0);
+    /** Increment Read pointer */
+    inc_readcbuffer(cb,0);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    printf("%s %d\n", c , i);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST3")==0);
     return 0;
 }
 
