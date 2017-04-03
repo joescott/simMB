@@ -52,7 +52,7 @@ int test_increment_cbuffer()
     _assert(i == 3);
     _assert(strcmp(c,"TEST2")==0);
     /** Increment Read pointer */
-    inc_readcbuffer(cb,0);
+    inc_readcbuffer(cb);
     /** Read third string added */
     c = (char *) read_cbuffer(cb);
     printf("%s %d\n", c , i);

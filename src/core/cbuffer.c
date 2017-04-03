@@ -20,14 +20,16 @@ int get_cbuff_elements(CBUFF *cbuff)
     return num;
 }
 
-int inc_readcbuffer(CBUFF *cbuff,int force)
+int inc_readcbuffer(CBUFF *cbuff)
 {
     void **lread = cbuff->read;
-    if(force || cbuff->read != cbuff->write)
+    if(cbuff->ctrl.inc_read_allow || cbuff->read != cbuff->write)
     {
+        cbuff->ctrl.inc_read_allow = 0;
         cbuff->read = cbuff->pool + (cbuff->read + 1 - cbuff->pool)%cbuff->num_total;
         if(cbuff->read == cbuff->write)
         {
+            cbuff->ctrl.dec_read_allow = 1;
             cbuff->read = lread;
             return 0;
         } 
@@ -36,14 +38,16 @@ int inc_readcbuffer(CBUFF *cbuff,int force)
     return 0;
 }
 
-int dec_readcbuffer(CBUFF *cbuff, int force)
+int dec_readcbuffer(CBUFF *cbuff)
 {
     void **lread = cbuff->read;
-    if(force || cbuff->read != cbuff->write)
+    if(cbuff->ctrl.dec_read_allow || cbuff->read != cbuff->write)
     {
+        cbuff->ctrl.dec_read_allow = 0;
         cbuff->read = cbuff->pool + ((cbuff->read - 1 - cbuff->pool)%cbuff->num_total);
         if(cbuff->read == cbuff->write)
         { 
+            cbuff->ctrl.inc_read_allow = 1;
             cbuff->read = lread;
             return 0;
         }
