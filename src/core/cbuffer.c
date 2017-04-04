@@ -61,7 +61,10 @@ int inc_writecbuffer(CBUFF *cbuff)
     cbuff->write = cbuff->pool + ((cbuff->write + 1 - cbuff->pool)%cbuff->num_total);
 
     if(*cbuff->write)
+    {
+        cbuff->ctrl.inc_read_allow = 1;
         cbuff->read = cbuff->write;
+    }
 
     return get_cbuff_elements(cbuff);
 }
@@ -69,9 +72,9 @@ int inc_writecbuffer(CBUFF *cbuff)
 CBUFF *init_cbuffer(const unsigned int num_elements)
 {
     CBUFF *cbuff = (CBUFF *)malloc(sizeof(CBUFF));
-    cbuff->pool = (void**)calloc(num_elements,sizeof(void*));
+    cbuff->pool = (CBUFF_ELEMENT_TYPE*)calloc(num_elements,sizeof(CBUFF_ELEMENT_TYPE));
     cbuff->num_total = num_elements;
-    cbuff->read = cbuff->write = cbuff->pool;
+    cbuff->read = cbuff->write = cbuff->pool; 
     return cbuff;
 }
 
@@ -81,12 +84,12 @@ void clean_cbuffer(CBUFF *cbuff)
     free(cbuff);
 }
 
-void* read_cbuffer(CBUFF *cbuff)
+CBUFF_ELEMENT_TYPE read_cbuffer(CBUFF *cbuff)
 {
     return *cbuff->read;
 }
 
-int write_cbuffer(CBUFF *cbuff, void *element)
+int write_cbuffer(CBUFF *cbuff, CBUFF_ELEMENT_TYPE element)
 {
     *cbuff->write = element;
     inc_writecbuffer(cbuff);

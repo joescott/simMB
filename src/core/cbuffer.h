@@ -1,10 +1,12 @@
 #ifndef __CBUFFER_H__
 #define __CBUFFER_H__
 
+typedef void * CBUFF_ELEMENT_TYPE;
+
 typedef struct {
-   void *read;
-   void *write;
-   void *pool;
+   CBUFF_ELEMENT_TYPE *read;
+   CBUFF_ELEMENT_TYPE *write;
+   CBUFF_ELEMENT_TYPE *pool;
    unsigned int num_total;
    struct {
    		unsigned int inc_read_allow:1;
@@ -15,8 +17,8 @@ typedef struct {
 CBUFF *init_cbuffer(const unsigned int num_elements);
 void clean_cbuffer(CBUFF *cbuff);
 
-void* read_cbuffer(CBUFF *cbuff);
-int write_cbuffer(CBUFF *cbuff, void *element);
+CBUFF_ELEMENT_TYPE read_cbuffer(CBUFF *cbuff);
+int write_cbuffer(CBUFF *cbuff, CBUFF_ELEMENT_TYPE element);
 
 int get_cbuff_elements(CBUFF *cbuff);
 int inc_readcbuffer(CBUFF *cbuff);
