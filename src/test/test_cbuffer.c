@@ -63,6 +63,63 @@ int test_increment_cbuffer()
     c = (char *) read_cbuffer(cb);
     _assert(i == 3);
     _assert(strcmp(c,"TEST4")==0);
+    /** Increment Read pointer */
+    inc_readcbuffer(cb);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST4")==0);
+    /** Increment Read pointer */
+    dec_readcbuffer(cb);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST3")==0);
+    /** Increment Read pointer */
+    dec_readcbuffer(cb);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST2")==0);
+    /** Increment Read pointer */
+    dec_readcbuffer(cb);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST2")==0);
+    /** Increment Read pointer */
+    inc_readcbuffer(cb);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST3")==0);
+    /** Increment Read pointer */
+    inc_readcbuffer(cb);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST4")==0);
+    /** Increment Read pointer */
+    inc_readcbuffer(cb);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST4")==0);
+    /** Increment Read pointer */
+    dec_readcbuffer(cb);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST3")==0);
+    /** Add a fifth string but losing second one */ 
+    i = write_cbuffer(cb,(void*)"TEST5");
+    _assert(i == 3);
+    /** Read third string added */
+    c = (char *) read_cbuffer(cb);
+    printf("%d %s\n",i ,c);
+    _assert(i == 3);
+    _assert(strcmp(c,"TEST5")==0);
+    
     return 0;
 }
 
