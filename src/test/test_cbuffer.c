@@ -119,7 +119,7 @@ int test_increment_cbuffer()
     printf("%d %s\n",i ,c);
     _assert(i == 3);
     _assert(strcmp(c,"TEST5")==0);
-    
+
     return 0;
 }
 

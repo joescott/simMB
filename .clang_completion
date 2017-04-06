@@ -1,0 +1,4 @@
+-Isrc/core
+-Isrc/test
+-Isrc/app
+-I/usr/include

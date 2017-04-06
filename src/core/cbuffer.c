@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include "cbuffer.h"
 
+static int mod(int x, int N)
+{
+   return (((x < 0) ? ((x % N) + N) : x) % N);
+}
+
 int get_cbuff_elements(CBUFF *cbuff)
 {
     int num; 
@@ -22,11 +27,11 @@ int get_cbuff_elements(CBUFF *cbuff)
 
 int inc_readcbuffer(CBUFF *cbuff)
 {
-    void **lread = cbuff->read;
+    CBUFF_ELEMENT_TYPE *lread = cbuff->read;
     if(cbuff->ctrl.inc_read_allow || cbuff->read != cbuff->write)
     {
         cbuff->ctrl.inc_read_allow = 0;
-        cbuff->read = cbuff->pool + (cbuff->read + 1 - cbuff->pool)%cbuff->num_total;
+        cbuff->read = cbuff->pool + mod((cbuff->read + 1 - cbuff->pool), cbuff->num_total);
         if(cbuff->read == cbuff->write)
         {
             cbuff->ctrl.dec_read_allow = 1;
@@ -40,17 +45,14 @@ int inc_readcbuffer(CBUFF *cbuff)
 
 int dec_readcbuffer(CBUFF *cbuff)
 {
-    void **lread = cbuff->read;
     if(cbuff->ctrl.dec_read_allow || cbuff->read != cbuff->write)
     {
         cbuff->ctrl.dec_read_allow = 0;
-        cbuff->read = cbuff->pool + ((cbuff->read - 1 - cbuff->pool)%cbuff->num_total);
+        int a = cbuff->read - 1 - cbuff->pool;
+        int b = mod(a, cbuff->num_total);
+        cbuff->read = cbuff->pool + mod((cbuff->read - 1 - cbuff->pool), cbuff->num_total);
         if(cbuff->read == cbuff->write)
-        { 
             cbuff->ctrl.inc_read_allow = 1;
-            cbuff->read = lread;
-            return 0;
-        }
         return 1;
     }
     return 0;
@@ -58,7 +60,7 @@ int dec_readcbuffer(CBUFF *cbuff)
 
 int inc_writecbuffer(CBUFF *cbuff)
 {
-    cbuff->write = cbuff->pool + ((cbuff->write + 1 - cbuff->pool)%cbuff->num_total);
+    cbuff->write = cbuff->pool + mod((cbuff->write + 1 - cbuff->pool), cbuff->num_total);
 
     if(*cbuff->write)
     {
