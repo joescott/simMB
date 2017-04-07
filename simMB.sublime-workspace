@@ -32,10 +32,10 @@
 	"buffers":
 	[
 		{
-			"file": ".clang_completion",
+			"file": "src/core/cbuffer.c",
 			"settings":
 			{
-				"buffer_size": 47,
+				"buffer_size": 2407,
 				"line_ending": "Unix"
 			}
 		},
@@ -46,17 +46,6 @@
 				"buffer_size": 3442,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
-			}
-		},
-		{
-			"contents": "Package Control Messages\n========================\n\nEasyClangComplete\n-----------------\n\n  Sublime Text 3 plugin that offers clang-based auto-completion for C++\n  \n  Let't get started!\n  ==================\n  \n  You're just two simple steps away!\n  \n  1. Install clang\n  ----------------\n  \n  - **Ubuntu**        : ``sudo apt-get install clang``\n  - **OSX**           : ships `clang` by default. You are all set!\n  - **Windows**       : install the latest release from clang website.\n  - **Other Systems** : use your package manager or install from clang website.\n  - clang website: http://llvm.org/releases/download.html\n  \n  2. Configure your includes\n  --------------------------\n  \n  Using CMake?\n  ~~~~~~~~~~~~\n  \n  Plugin will run cmake on a proper ``CMakeLists.txt`` in your project folder and\n  will use information from it to complete your code out of the box.\n  \n  Have a compilation database?\n  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  \n  Plugin will search for a compilation database ``compile_commands.json`` in the\n  project folder and will load it to complete your code. If you want to specify a\n  custom path to a comilation database you can do it in settings::\n  \n      \"flags_sources\": [\n          {\"file\": \"compile_commands.json\", \"search_in\": \"<YOUR_PATH>\"},\n      ]\n  \n  None of the above?\n  ~~~~~~~~~~~~~~~~~~\n  \n  You will need a little bit of manual setup for now. Clang will automatically\n  search for headers in the folder that contains the file you are working on and\n  its parent. If you have a more sophisticated project you will need to help clang\n  just a little bit. There are three ways to do it.\n  \n  Pick **ANY** of the following:\n  \n  - Set include dirs in ``\"common_flags\"`` setting in ``User Settings``.\n  - Override ``\"common_flags\"`` setting in your project file, i.e. one that has\n    extension: ``*.sublime-project``. Just define the same setting in project\n    specific settings with either one of two prefixes: ``\"ecc_\"`` or\n    ``\"easy_clang_complete_\"`` to override a corresponding setting in your user\n    settings. See the project file in this repo for a working example. Minimal\n    example for clarity::\n  \n      {\n        \"settings\":\n        {\n          \"ecc_common_flags\": [\"-Isrc\", \"-I/usr/include\"],\n          \"easy_clang_complete_verbose\": true\n        }\n      }\n  \n  - It is recommended to use one of the above, but if you already have a file with\n    flags, you can add ``.clang_complete`` file to the root of your project\n    folder. This file adds additional flags to the ones defined with in\n    ``\"common_flags\"``. Example::\n  \n      -Isrc\n      -I/usr/include\n  \n  That's it! You're ready to use the plugin!\n  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n  \n  More info here\n  ~~~~~~~~~~~~~~\n  \n  Get more info in a readme:\n  https://github.com/niosus/EasyClangComplete/blob/master/README.md\n  \n  Please see the default settings ``EasyClangComplete.sublime-settings``\n  shipped with the plugin for explanations and sane default values.\n  \n  Thanks!\n  =======\n  \n  💜 this plugin? Consider buying me a 🍵\n  https://github.com/niosus/EasyClangComplete#support-it\n",
-			"settings":
-			{
-				"buffer_size": 3107,
-				"line_ending": "Unix",
-				"name": "Package Control Messages",
-				"read_only": true,
-				"scratch": true
 			}
 		},
 		{
@@ -263,7 +252,9 @@
 	"expanded_folders":
 	[
 		"/home/jorge/Work/github/simMB",
-		"/home/jorge/Work/github/simMB/src"
+		"/home/jorge/Work/github/simMB/src",
+		"/home/jorge/Work/github/simMB/src/core",
+		"/home/jorge/Work/github/simMB/src/test"
 	],
 	"file_history":
 	[
@@ -327,29 +318,28 @@
 			[
 				{
 					"buffer": 0,
-					"file": ".clang_completion",
-					"semi_transient": true,
+					"file": "src/core/cbuffer.c",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 47,
+						"buffer_size": 2407,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								47,
-								47
+								0,
+								0
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"syntax": "Packages/C++/C.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
 							"vintage":
 							{
-								"_vintageous_glue_until_normal_mode": false,
-								"_vintageous_non_interactive": false,
-								"_vintageous_processing_notation": false,
 								"action": null,
 								"action_count": "",
 								"mode": "mode_normal",
@@ -366,7 +356,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -388,8 +378,8 @@
 						"selection":
 						[
 							[
-								3250,
-								3250
+								3219,
+								3219
 							]
 						],
 						"settings":
@@ -413,7 +403,7 @@
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 5
+								"xpos": 23
 							}
 						},
 						"translation.x": 0.0,
@@ -425,49 +415,6 @@
 				},
 				{
 					"buffer": 2,
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3107,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3107,
-								3107
-							]
-						],
-						"settings":
-						{
-							"auto_indent": false,
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_width": 2,
-							"vintage":
-							{
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 0
-							},
-							"word_wrap": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 3,
 					"file": "src/core/cbuffer.h",
 					"semi_transient": false,
 					"settings":
@@ -508,7 +455,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -612,7 +559,7 @@
 		"_vintageous_reset_during_init": true,
 		"vintage":
 		{
-			"_cmdline_cd": "/home/jorge/Work/github/simMB/src/test"
+			"_cmdline_cd": "/opt/sublime_text_3"
 		}
 	},
 	"show_minimap": false,
