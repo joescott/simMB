@@ -11,14 +11,15 @@ extern int test_cbuffer();
 
 int all_test()
 {
-    test_cbuffer();
-    return 0;
+	int rtn = 0;
+    rtn += test_cbuffer();
+    return rtn;
 }
 
 int main(int argc, char **argv)
 {
     int rtn;
     if((rtn=all_test()) == 0)
-        printf("PASSED\n");
+        printf("TEST PASSED\n");
     return rtn != 0;
 }

@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"prin",
+				"print_cb"
+			],
+			[
 				"CBUFF_",
 				"CBUFF_ELEMENT_TYPE"
 			],
@@ -43,7 +47,7 @@
 			"file": "src/test/test_cbuffer.c",
 			"settings":
 			{
-				"buffer_size": 3442,
+				"buffer_size": 4293,
 				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
@@ -356,7 +360,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -371,15 +375,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 3442,
+						"buffer_size": 4293,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3219,
-								3219
+								1563,
+								1563
 							]
 						],
 						"settings":
@@ -403,11 +407,11 @@
 								"partial_sequence": "",
 								"register": "\"",
 								"sequence": "",
-								"xpos": 23
+								"xpos": 38
 							}
 						},
 						"translation.x": 0.0,
-						"translation.y": 1245.0,
+						"translation.y": 675.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -455,7 +459,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
@@ -552,14 +556,14 @@
 	"selected_group": 1,
 	"settings":
 	{
-		"_vintageous_last_buffer_search": "print",
-		"_vintageous_last_buffer_search_command": "vi_slash",
+		"_vintageous_last_buffer_search": "print_cb",
+		"_vintageous_last_buffer_search_command": "vi_octothorp",
 		"_vintageous_last_char_search_command": "vi_big_f",
 		"_vintageous_last_character_search": "F",
 		"_vintageous_reset_during_init": true,
 		"vintage":
 		{
-			"_cmdline_cd": "/opt/sublime_text_3"
+			"_cmdline_cd": "/home/jorge/Work/github/simMB/src/test"
 		}
 	},
 	"show_minimap": false,
