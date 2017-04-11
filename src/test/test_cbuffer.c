@@ -9,11 +9,9 @@
 #include <stdio.h>
 #include <string.h>
 
-int tests_run = 0;
-
 static CBUFF *cb;
 
-#define CBUFFER_DEBUG
+#define NCBUFFER_DEBUG
 #ifndef CBUFFER_DEBUG
 
 #define _inc_readcbuffer inc_readcbuffer

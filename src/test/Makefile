@@ -20,6 +20,7 @@ CFLAGS   += -DBUILD_NUMBER=$(BUILD_NUMBER) -DBUILD_DATE=$(BUILD_DATE)
 
 SRC      = test_main.c 
 SRC 	+= test_cbuffer.c ../core/cbuffer.c
+SRC 	+= test_hist.c ../core/hist.c
 
 OBJS     = $(SRC:.c=.o)
 DEPS     = $(OBJS:.o=.d) 

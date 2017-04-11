@@ -6,6 +6,7 @@
 #include "tdd.h"
 
 extern int test_cbuffer();
+extern int test_hist();
 
 #include <stdio.h>
 
@@ -13,6 +14,7 @@ int all_test()
 {
 	int rtn = 0;
     rtn += test_cbuffer();
+    rtn += test_hist();
     return rtn;
 }
 

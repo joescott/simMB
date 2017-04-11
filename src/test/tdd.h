@@ -1,6 +1,8 @@
 #ifndef __TDD_H__
 #define __TDD_H__
 
+int tests_run;
+
 #define PRINTTEST(test) printf("TEST %d: %s ",tests_run,#test)
 #define PRINTOK(test) printf("OK\n")
 #define FAIL() printf("\nFailure in %s() [%d]\n", __func__, __LINE__)

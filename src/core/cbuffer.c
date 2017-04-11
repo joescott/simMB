@@ -48,8 +48,6 @@ int dec_readcbuffer(CBUFF *cbuff)
     if(cbuff->ctrl.dec_read_allow || cbuff->read != cbuff->write)
     {
         cbuff->ctrl.dec_read_allow = 0;
-        int a = cbuff->read - 1 - cbuff->pool;
-        int b = mod(a, cbuff->num_total);
         cbuff->read = cbuff->pool + mod((cbuff->read - 1 - cbuff->pool), cbuff->num_total);
         if(cbuff->read == cbuff->write)
             cbuff->ctrl.inc_read_allow = 1;
