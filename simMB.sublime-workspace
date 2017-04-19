@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"test",
+				"tests_run"
+			],
+			[
+				"in",
+				"inc_writecbuffer"
+			],
+			[
+				"inc_",
+				"inc_readcbuffer"
+			],
+			[
+				"PRINT",
+				"PRINTOK"
+			],
+			[
 				"prin",
 				"print_cb"
 			],
@@ -35,32 +51,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/core/cbuffer.c",
-			"settings":
-			{
-				"buffer_size": 2407,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/test/test_cbuffer.c",
-			"settings":
-			{
-				"buffer_size": 4293,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/core/cbuffer.h",
-			"settings":
-			{
-				"buffer_size": 666,
-				"encoding": "UTF-8",
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "Packages/Makefile/Make.sublime-build",
 	"build_system_choices":
@@ -262,15 +252,26 @@
 	],
 	"file_history":
 	[
+		"/home/jorge/Work/github/simMB/src/test/Makefile",
+		"/home/jorge/Work/github/simMB/src/core/hist.c",
 		"/home/jorge/Work/github/simMB/src/core/cbuffer.c",
+		"/home/jorge/Work/py/bits/bits.py",
+		"/home/jorge/Work/github/simMB/src/test/test_hist.c",
+		"/home/jorge/Work/github/simMB/src/test/test_main.c",
+		"/home/jorge/Work/github/simMB/src/test/test_cbuffer.c",
+		"/home/jorge/Work/github/simMB/src/test/tdd.h",
+		"/home/jorge/Work/github/simMB/libstm/test/Makefile",
+		"/home/jorge/Work/github/simMB/src/core/cbuffer.h",
+		"/home/jorge/.config/i3/config",
+		"/home/jorge/.config/i3/configs",
+		"/home/jorge/.config/xa",
+		"/run/media/jorge/90fc81c2-58db-4fa4-8ce5-b1915754deff/etc/fstab",
 		"/home/jorge/.config/sublime-text-3/Packages/User/|.glue",
 		"/home/jorge/.config/sublime-text-3/Packages/User/Glue.sublime-settings",
 		"/home/jorge/.config/sublime-text-3/Packages/Glue/Glue.sublime-settings",
 		"/home/jorge/.config/sublime-text-3/Packages/Terminal/Default (Linux).sublime-keymap",
 		"/home/jorge/.config/sublime-text-3/Packages/CodeComplice/Default (Linux).sublime-keymap",
 		"/home/jorge/Work/github/simMB/simMB.sublime-project",
-		"/home/jorge/Work/github/simMB/src/core/cbuffer.h",
-		"/home/jorge/Work/github/simMB/src/test/test_cbuffer.c",
 		"/home/jorge/Work/github/simMB/README.md",
 		"/home/jorge/.config/sublime-text-3/Packages/SublimeLinter/Default (Linux).sublime-keymap",
 		"/home/jorge/.config/sublime-text-3/Packages/SublimeGDB/Default.sublime-keymap",
@@ -300,6 +301,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"a"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -317,151 +319,13 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/core/cbuffer.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 2407,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"vintage":
-							{
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 0
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				}
 			]
 		},
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 1,
-					"file": "src/test/test_cbuffer.c",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 4293,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1563,
-								1563
-							]
-						],
-						"settings":
-						{
-							"highlight_line": false,
-							"syntax": "Packages/C++/C.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true,
-							"vintage":
-							{
-								"_vintageous_glue_until_normal_mode": false,
-								"_vintageous_non_interactive": false,
-								"_vintageous_processing_notation": false,
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"normal_insert_count": "1",
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 38
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 675.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/core/cbuffer.h",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 666,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								424,
-								424
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"vintage":
-							{
-								"_vintageous_glue_until_normal_mode": false,
-								"_vintageous_non_interactive": false,
-								"_vintageous_processing_notation": false,
-								"action": null,
-								"action_count": "",
-								"mode": "mode_normal",
-								"motion": null,
-								"motion_count": "",
-								"must_capture_register_name": false,
-								"normal_insert_count": "1",
-								"partial_sequence": "",
-								"register": "\"",
-								"sequence": "",
-								"xpos": 19
-							}
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -493,7 +357,7 @@
 		"cols":
 		[
 			0.0,
-			0.5,
+			0.399517684887,
 			1.0
 		],
 		"rows":
@@ -529,8 +393,16 @@
 		"selected_items":
 		[
 			[
+				"test/",
+				"libstm/test/Makefile"
+			],
+			[
+				"his",
+				"src/core/hist.c"
+			],
+			[
 				"",
-				"README.md"
+				"src/core/hist.h"
 			]
 		],
 		"width": 0.0
@@ -556,14 +428,14 @@
 	"selected_group": 1,
 	"settings":
 	{
-		"_vintageous_last_buffer_search": "print_cb",
+		"_vintageous_last_buffer_search": "monL",
 		"_vintageous_last_buffer_search_command": "vi_octothorp",
 		"_vintageous_last_char_search_command": "vi_big_f",
 		"_vintageous_last_character_search": "F",
 		"_vintageous_reset_during_init": true,
 		"vintage":
 		{
-			"_cmdline_cd": "/home/jorge/Work/github/simMB/src/test"
+			"_cmdline_cd": "/opt/sublime_text_3"
 		}
 	},
 	"show_minimap": false,
