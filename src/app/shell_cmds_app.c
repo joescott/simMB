@@ -37,10 +37,17 @@ static RTN_CMD_PROC do_cmd_turn(SHELL *shell)
 
     if((strcmp("on",shell->argv[1]) == 0))
     {
-        valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(STATUS, 1));
+        app->cmd = SIM_CMD_ST_ON;
+        rtn = RTN_CMD_OK;
+    }else if((strcmp("start",shell->argv[1]) == 0))
+    {
+        app->cmd = SIM_CMD_ST_START;
+        rtn = RTN_CMD_OK;
+    }else if((strcmp("stop",shell->argv[1]) == 0)) {
+        app->cmd = SIM_CMD_ST_STOP;
         rtn = RTN_CMD_OK;
     }else if((strcmp("off",shell->argv[1]) == 0)) {
-        valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(STATUS, 0));
+        app->cmd = SIM_CMD_ST_OFF;
         rtn = RTN_CMD_OK;
     }
 
@@ -76,14 +83,8 @@ static RTN_CMD_PROC do_cmd_set_sim(SHELL *shell)
  */
 static RTN_CMD_PROC do_cmd_reset_sim(SHELL *shell)
 {
-    DATA_ST *d_st = (DATA_ST*) shell->data;
-    SIM_CORE_ST *sim = &d_st->sim;
-    SIM_DATA_ST *app = (SIM_DATA_ST*) sim->app;
+    init_sim(shell->data);
 
-    valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(PESO,   0));
-    valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(DESP,   0));
-    valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(NONE,   0));
-    valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(STATUS, 0));
     (*shell->printf)(CMD_OK_RESPONSE);
     return RTN_CMD_OK;
 }

@@ -168,10 +168,12 @@ const SHELL_CMD shell_cmd_tbl[]={
 static RTN_CMD_PROC do_cmd_help(SHELL *shell)
 {
     const SHELL_CMD *shell_cmd;
-    (*shell->printf)("Shell Help:\r\n");
+    (*shell->printf)("Help menu:\r\n");
+    (*shell->printf)("Shell:\r\n");
     for(shell_cmd = shell_cmd_tbl;
             (shell_cmd->help != NULL) ;shell_cmd++)
         (*shell->printf)("\t%s : %s\r\n", shell_cmd->cmd, shell_cmd->help);
+    (*shell->printf)("App:\r\n");
     for(shell_cmd = shell_cmd_app_tbl;
             (shell_cmd->help != NULL) ;shell_cmd++)
         (*shell->printf)("\t%s : %s\r\n", shell_cmd->cmd, shell_cmd->help);

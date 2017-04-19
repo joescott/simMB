@@ -129,6 +129,7 @@ static int readAOHReg(MB_DATA_ST *mb_data)
     int rtn = 0;
     MB_READ_OHR_ST *pmb_conf_readohr;
     uint16_t addr = MODBUS_GET_INT16_FROM_INT8(mb_data->mb_query, MB_DATA_ADDR);
+    //debug_printf(mb_data->debug, ">%s[%d]\n",__FUNCTION__, addr);
     pthread_mutex_lock(&(mb_data->mutex));
     for(pmb_conf_readohr = mb_confreadohr_tbl;
             (pmb_conf_readohr-mb_confreadohr_tbl) < MB_READ_OHR_TBL_SIZE; pmb_conf_readohr++ )
