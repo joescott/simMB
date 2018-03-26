@@ -6,7 +6,6 @@
 #include <math.h>
 #include <modbus.h>
 
-#include "mb_map.h"
 #include "func_mb.h"
 #include "debug.h"
 #include "log.h"

@@ -26,6 +26,20 @@
 #include <stdlib.h>
 
 /** 
+ * Command to get sim status
+ */
+static RTN_CMD_PROC do_cmd_get_status(SHELL *shell)
+{
+    int m, z;
+    DATA_ST *d_st = (DATA_ST*) shell->data;
+    SIM_CORE_ST *sim = &d_st->sim;
+    SIM_DATA_ST *app = (SIM_DATA_ST*) sim->app;
+
+    (*shell->printf)("SIM STATUS:  %s\n",sim_st_debug[app->status]);
+    return RTN_CMD_OK;
+}
+
+/** 
  * Command to turn on
  */
 static RTN_CMD_PROC do_cmd_turn(SHELL *shell)
@@ -142,16 +156,36 @@ static RTN_CMD_PROC do_cmd_set_mb(SHELL *shell)
     return RTN_CMD_OK;
 }
 
+/**
+ * How to
+ */
 
+#define HOWTO " Howto simulation:  Simulacion de app\n"\
+"                                   \n"\
+" -----   on   ------  start  ----- \n"\
+"| off | ---> | wait | ----> | sim |\n"\
+" -----        ------         ----- \n"\
+"   ^     off    |  ^   stop    |   \n"\
+"   '------------'  '-----------'   \n"\
+"                                   \n"\
+" resetsim: vuelta a cero valores   \n"\
+" setsim:   especifica parametros   \n"
 
+static RTN_CMD_PROC do_cmd_howto(SHELL *shell)
+{
+    (*shell->printf)(HOWTO);
+    return RTN_CMD_OK;
+}
 
 const SHELL_CMD shell_cmd_app_tbl[]={
-    {"resetsim",0, "Resets ALL variable values to zero.", do_cmd_reset_sim },
-    {"turn",    1, "Turn on/off: turn [on|off]",          do_cmd_turn      },
-    {"setsim",  2, "Set sim parameters.",                 do_cmd_set_sim   },
+    {"howto",       0, "Explaining how it works.",                         do_cmd_howto     },
+    {"resetsim",    0, "Resets ALL variable values to zero.",              do_cmd_reset_sim },
+    {"turn",        1, "Turn on/off start/stop: turn [on|start|stop|off]", do_cmd_turn      },
+    {"setsim",      2, "Set sim parameters.",                              do_cmd_set_sim   },
+    {"status",      0, "Get Status.",                                      do_cmd_get_status},
 
-    {"get_mb",  3, "Get MB: get_mb <addr> 16|32 cnt",     do_cmd_get_mb    },
-    {"set_mb",  3, "Set MB: set_mb <addr> 16|32 <value>", do_cmd_set_mb    },
+    {"get_mb",      3, "Get MB: get_mb <addr> 16|32 cnt",                  do_cmd_get_mb    },
+    {"set_mb",      3, "Set MB: set_mb <addr> 16|32 <value>",              do_cmd_set_mb    },
     {NULL,0,NULL,NULL}
 };
 

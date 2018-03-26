@@ -7,7 +7,7 @@
 #include "mb_map.h"
 #include "debug.h"
 
-static const char * sim_st_debug[]=
+const char * sim_st_debug[]=
 {
     "Apagado",
     "Espera de Inicio",
@@ -29,8 +29,8 @@ void init_sim(SIM_ARGS)
     app->status = SIM_ST_OFF;
     app->cmd    = SIM_CMD_ST_NONE;
 
-    app->m_factor = 100;    /** pendiente desplazamiento */
-    app->z_factor = 0;      /** inicio del desplazamiento */
+    app->m_factor = 100;   /** pendiente desplazamiento */
+    app->z_factor = 0;    /** inicio del desplazamiento */
 
     valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(PESO,     0));
     valueToMB(d_st->mb->mb_mapping->tab_registers, SET_MB_HR(DESP,     0));
@@ -110,7 +110,7 @@ RTN_SIM sim(SIM_ARGS)
             break;
     }
     if(last_st != app->status)
-        debug_printf(true, "STATE: %s\n",sim_st_debug[app->status]);
+        debug_printf(true, "|STATE: %s|\n",sim_st_debug[app->status]);
     usleep(sim->loop_time);
 #endif
     return RTN_SIM_LOOP;

@@ -11,6 +11,8 @@ typedef enum {
 extern RTN_SIM sim(SIM_ARGS);
 extern void init_sim(SIM_ARGS);
 
+extern const char * sim_st_debug[];
+
 typedef struct {
     int loop_time;
     void *app;
